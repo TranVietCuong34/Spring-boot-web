@@ -70,8 +70,8 @@
 				<span><i class="fa-solid fa-align-right"></i></span>
 			</div>
 			<div class="search-header">
-				<input type="text" placeholder="Tìm kiếm sản phẩm..."> <input
-					type="submit" name="" value="Tìm kiếm">
+				<input type="text" placeholder="Tìm kiếm sản phẩm..."> 
+				<input type="submit" name="" value="Tìm kiếm">
 
 			</div>
 

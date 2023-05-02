@@ -40,7 +40,6 @@
                 <li><a href="${base}/shop">Sản phẩm</a></li>
                 <li><a href="${base}/news">Blog</a></li>
                 <li><a href="">Giới thiệu</a></li>
-              <%--   <li><a href="${base}/contact-us-spring-form">Liên Hệ</a></li> --%>
                 <li><a href="${base}/contact"">Liên Hệ</a></li>
             </ul>
         </div>
@@ -62,7 +61,7 @@
                             <div class="div-info">
                                 <div class="div-info-title">
                                     <p>Samsung</p>
-                                    <a href="">Samsung Galaxy S9+ 128GB</a>
+                                    <a href="${base}/productDatail">Samsung Galaxy S9+ 128GB</a>
                                 </div>
 
                                 <div class="price">

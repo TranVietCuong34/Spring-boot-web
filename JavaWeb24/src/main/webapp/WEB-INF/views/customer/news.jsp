@@ -9,15 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
-     <jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
-     <link rel="stylesheet" href="${base}/css/news.css">
+       <jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
+     <link rel="stylesheet" href="${base}/css/news2.css">
     <title>News</title>
 </head>
 
 <body>
-
-    <jsp:include page="/WEB-INF/views/customer/layout/header.jsp"></jsp:include>
-    <div class="content">
+   <jsp:include page="/WEB-INF/views/customer/layout/header.jsp"></jsp:include>
+      <div class="content">
         <div class="content-left">
             <div class="product">
                 <ul>
@@ -28,7 +27,7 @@
                             </div>
                             <div class="div-info">
                                 <p>
-                                     Hôm nay (20/3) nhà sản xuất Lenovo đã tổ chức một sự kiện ra mắt để công bố bộ ba
+                                    Hôm nay (20/3) nhà sản xuất Lenovo đã tổ chức một sự kiện ra mắt để công bố bộ ba
                                     smartphone mới bao gồm Lenovo S5, Lenovo K5 và K5 Play....
                                 </p>
                                 <a href="">Lenovo chính thức trình làng bộ ba S5, K5 và K5 Play</a>
@@ -50,17 +49,17 @@
                     <li class="col-4 ">
                         <div class="item">
                             <div class="img">
-                                <a href="${base}/news-datail"><img src="img/product-img2pg-news.jpg" alt=""></a>
+                                <a href=""><img src="img/product-img2pg-news.jpg" alt=""></a>
                             </div>
                             <div class="div-info">
                                 <p>
 
-                                   Ảnh minh họa
+                                    Ảnh minh họa
                                     Dòng J là dòng sản phẩm được nhiều người ưa thích nhất trong số các điện thoại thông
                                     minh của Samsung. Nguồn tin mới...
                                 </p>
                                 <a href="">
-                                 Galaxy J7 (2018) lộ diện trên FCC với màn hình 5.6 inch
+                                    Galaxy J7 (2018) lộ diện trên FCC với màn hình 5.6 inch
                                 </a>
                                 <div class="time">
                                     <p>
@@ -83,7 +82,7 @@
                             </div>
                             <div class="div-info">
                                 <p>
-                                 Quá nhiều người đến Apple Store thay pin cũng dẫn đến những mối nguy khó ngờ.
+                                    Quá nhiều người đến Apple Store thay pin cũng dẫn đến những mối nguy khó ngờ.
                                     Các cửa hàng Apple giờ đây là nơi đến của rất nh...
                                 </p>
                                 <a href="">Thụy Sỹ: iPhone cháy mù mịt ngay trong Apple Store khiến cả khách và nhân
@@ -111,11 +110,11 @@
                             </div>
                             <div class="div-info">
                                 <p>
-                                     3 mẫu iPhone X cải tiến, iPad giá rẻ... thế đã đủ để bạn mong chờ một năm 2018 bùng
+                                    3 mẫu iPhone X cải tiến, iPad giá rẻ... thế đã đủ để bạn mong chờ một năm 2018 bùng
                                     nổ của Apple hay chưa?
                                     Apple là thương hiệu côn...
                                 </p>
-                                <a href=""> 6 'hàng nóng' Apple dự kiến ra mắt trong năm 2018 khiến ai cũng ngóng chờ
+                                <a href=""> 6 'hàng nóng' Apple dự kiến ra mắt trong năm 2018 khiến ai cũng ngóng chờ
                                 </a>
                                 <div class="time">
                                     <p>
@@ -142,9 +141,8 @@
                                     2 và iPad 4.
                                     Mới đây trên trang IPSW.me, Apple đã b...
                                 </p>
-                                <a href="">  Các thiết bị có thể hạ xuống đến iOS 6 bao gồm bộ ba iPhone 5, 5C, 5S cùng iPad Mini
-                                    2 và iPad 4.
-                                    Mới đây trên trang IPSW.me, Apple đã b...
+                                <a href=""> Apple cho phép hạ cấp phiên bản iOS trên các thiết bị cũ, nhưng chớ vội vui
+                                    mừng làm theo
                                 </a>
                                 <div class="time">
                                     <p>
@@ -208,14 +206,14 @@
                         <a href="">Giới thiệu</a>
                     </li>
                     <li>
-                        <a href=""> Liên hệ</a>
+                        <a href=""> Liên hệ</a>
                     </li>
                 </ul>
 
             </div>
             <div class="content-right-box-3">
                 <div class="title selling">
-                    <p>Tin ná»i báº­t</p>
+                    <p>Tin nổi bật</p>
                 </div>
                 <ul>
                     <li>
@@ -276,7 +274,7 @@
                                 <a href=""><img src="img/content-right-4-news.jpg" alt=""></a>
                             </div>
                             <div class="div-info">
-                                <a href=""> 6 'hàng nóng' Apple dự kiến ra mắt trong năm 2018 khiến ai cũng ngóng chờ
+                                <a href=""> 6 'hàng nóng' Apple dự kiến ra mắt trong năm 2018 khiến ai cũng ngóng chờ
                                 </a>
                                 <div class="time">
                                     <p>
@@ -291,7 +289,7 @@
             </div>
         </div>
     </div>
-   <jsp:include page="/WEB-INF/views/customer/layout/footer.jsp"></jsp:include>
+    <jsp:include page="/WEB-INF/views/customer/layout/footer.jsp"></jsp:include>
 </body>
 
 </html>
