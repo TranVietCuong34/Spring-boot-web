@@ -37,12 +37,12 @@ html {
 
 body.dark {
 	--light: #0C0C1E;
-	--grey: #060714;
+	--grey: #AAAAAA;
 	--dark: #FBFBFB;
 }
 
 body {
-	background: var(--grey);
+	background: var(--light);
 	overflow-x: hidden;
 }
 
@@ -221,7 +221,6 @@ body {
 	padding: 0 16px;
 	height: 100%;
 	border: none;
-	background: var(--grey);
 	border-radius: 36px 0 0 36px;
 	outline: none;
 	width: 100%;
@@ -238,7 +237,6 @@ body {
 	font-size: 18px;
 	border: none;
 	outline: none;
-	border-radius: 0 36px 36px 0;
 	cursor: pointer;
 }
 #content nav .notification {
@@ -426,16 +424,96 @@ body {
 	border-radius: 20px;
 	font-weight: 700;
 }
-#content main .table-data .order table tr td .status.completed {
-	background: var(--blue);
-}
-#content main .table-data .order table tr td .status.process {
-	background: var(--yellow);
-}
-#content main .table-data .order table tr td .status.pending {
-	background: var(--orange);
-}
 
+
+#content main .table-data .order .add-product{
+	float: right;
+	margin-right: 100px;
+	margin-bottom: 40px;
+	padding: 5px;
+
+}
+.form-add{display: none;}
+form h1 {
+    font-size: 18px;
+    background: #3C91E6 none repeat scroll 0% 0%;
+    color: rgb(255, 255, 255);
+    padding: 22px 25px;
+    border-radius: 5px 5px 0px 0px;
+    margin: auto;
+    text-shadow: none; 
+    text-align:left;
+	position: relative;
+  }
+.close{
+	position: absolute;
+	top: -1px;
+	right: 0;
+	font-size: 30px;
+	background-color: #3C91E6;
+	cursor: pointer;
+} 
+
+form {
+    border-radius: 5px;
+    max-width:700px;
+    width:100%;
+    margin: 5% auto;
+    background-color: #FFFFFF;
+    overflow: hidden;
+}
+form h1{
+  text-align: center;
+  font-size: 25px;
+}
+p span {
+    color: #F00;
+}
+p {
+    margin: 0px;
+    font-weight: 500;
+    line-height: 2;
+    color:#333;
+}
+  
+h1 {
+    text-align:center; 
+    color: #666;
+    text-shadow: 1px 1px 0px #FFF;
+    margin:50px 0px 0px 0px
+}
+.form-group {
+    overflow: hidden;
+    clear: both;
+} 
+.form-group input {
+    border-radius: 0px 5px 5px 0px;
+    border: 1px solid #eee;
+    margin-bottom: 15px;
+    width: 75%;
+    height: 40px;
+    float: left;
+    padding: 0px 15px;
+} 
+
+.contentform {
+    padding: 40px 30px;
+}
+  
+.button-contact{
+    background-color: #3C91E6;
+    color: #FFF;
+    text-align: center;
+    width: 100%;
+    border:0;
+    padding: 17px 25px;
+    border-radius: 0px 0px 5px 5px;
+    cursor: pointer;
+    margin-top: 40px;
+    font-size: 18px;
+}
+  
+  
 /* MAIN */
 /* CONTENT */
 

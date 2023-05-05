@@ -142,8 +142,7 @@ header{
 }
 .search-header {
     display: flex;
-    width: 50%;
-    
+    width: 40%;
 }
 .header-box2-item .search-header input{
     margin-top: 5px;
@@ -156,10 +155,9 @@ header{
     width: 100%;
 
 }
-.header-box2-item button{
+.header-box2-item input[type="submit"]{
     background-color: #ffc000;
     color: #fff;
-    font-weight: 500;
     text-transform: uppercase;
     border-radius: 0px 4px 4px 0;
     font-size: 11px;
@@ -168,7 +166,9 @@ header{
     height: 38px;
     border: 1px solid #fff;
     margin-top: 5px;
-    margin-left: -80px;
+    margin-left: -79px;
+    cursor: pointer;
+    padding: 10px;
 }
 .header-box2-right ul{
     display: flex;

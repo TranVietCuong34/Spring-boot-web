@@ -1,7 +1,5 @@
 package com.devpro.JavaWeb.model;
 
-
-
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,25 +10,25 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class BaseEntity {
-	@Id //khóa chính
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name ="id")
+	@Id 	//khóa chính
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //tăng tự động
+	@Column(name = "id")
 	private Integer id;
 	
 	@Column(name = "status",nullable = true)
-	private boolean status= Boolean.TRUE;
-	
-	@Column(name = "created_by",nullable = true)
-	private Integer createdBy;
-	
-	@Column(name = "updated_by",nullable = true)
-	private Integer updateBy;
+	private boolean status;
 	
 	@Column(name = "created_date",nullable = true)
-	private  Date createdDate;
+	private Date created_date;
 	
 	@Column(name = "updated_date",nullable = true)
-	private Date updateDate;
+	private Date updated_date;
+	
+	@Column(name = "created_by",nullable = true)
+	private Integer created_by;
+	
+	@Column(name = "updated_by",nullable = true)
+	private Integer updated_by;
 
 	public Integer getId() {
 		return id;
@@ -48,36 +46,36 @@ public abstract class BaseEntity {
 		this.status = status;
 	}
 
-	public Integer getCreatedBy() {
-		return createdBy;
+	public Date getCreated_date() {
+		return created_date;
 	}
 
-	public void setCreatedBy(Integer createdBy) {
-		this.createdBy = createdBy;
+	public void setCreated_date(Date created_date) {
+		this.created_date = created_date;
 	}
 
-	public Integer getUpdateBy() {
-		return updateBy;
+	public Date getUpdated_date() {
+		return updated_date;
 	}
 
-	public void setUpdateBy(Integer updateBy) {
-		this.updateBy = updateBy;
+	public void setUpdated_date(Date updated_date) {
+		this.updated_date = updated_date;
 	}
 
-	public Date getCreatedDate() {
-		return createdDate;
+	public Integer getCreated_by() {
+		return created_by;
 	}
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
+	public void setCreated_by(Integer created_by) {
+		this.created_by = created_by;
 	}
 
-	public Date getUpdateDate() {
-		return updateDate;
+	public Integer getUpdated_by() {
+		return updated_by;
 	}
 
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
+	public void setUpdated_by(Integer updated_by) {
+		this.updated_by = updated_by;
 	}
 	
 }

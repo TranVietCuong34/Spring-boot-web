@@ -98,7 +98,7 @@
 				<span class="num">8</span>
 			</a>
 			<a href="#" class="profile">
-				<img src="../img/avta.jpg">
+				<img src="../img/avata-admin.jpg">
 			</a>
 		</nav>
 		<!-- NAVBAR -->
@@ -106,35 +106,12 @@
 		<!-- MAIN -->
 		<main>
 
-			<ul class="box-info">
-				<li>
-					<i class='bx bxs-calendar-check'></i>
-					<span class="text">
-						<h3>1020</h3>
-						<p>New Order</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-group'></i>
-					<span class="text">
-						<h3>2834</h3>
-						<p>Visitors</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-dollar-circle'></i>
-					<span class="text">
-						<h3>$2543</h3>
-						<p>Total Sales</p>
-					</span>
-				</li>
-			</ul>
 
 
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3>Quản Lý Sản Phẩm</h3>
+						<h3>Quản Lý Khách Hàng</h3>
 						<i class='bx bx-search'></i>
 						<i class='bx bx-filter'></i>
 					</div>
@@ -142,177 +119,31 @@
 						<thead>
 							<tr>
 								<th>STT</th>
-								<th>Ảnh</th>
-								<th>Tên Sản Phẩm</th>
-								<th>Số Lượng</th>
-								<th>Đơn giá</th>
-								<th>Thao tác</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-								1
-								</td>
-								<td>
-									<img src="../img/img1-product1.jpg" alt="">
-								</td>
-								<td>Samsung Galaxy S9+ 128GB</td>
-								<td>1</td>
-								<td>24.990.000₫ </td>
-								<td>
-									<button>Sửa</button>
-									<button>Xóa</button>
-									<button>Chi tiết</button>
-								</td>
-								
-							</tr>
-							<tr>
-								<td>
-								2
-								</td>
-								<td>
-									<img src="../img/img1-product1.jpg" alt="">
-								</td>
-								<td>Samsung Galaxy S9+ 128GB</td>
-								<td>1</td>
-								<td>24.990.000₫ </td>
-								<td>
-									<button>Sửa</button>
-									<button>Xóa</button>
-									<button>Chi thiết</button>
-								</td>
-								
-							</tr><tr>
-								<td>
-								3
-								</td>
-								<td>
-									<img src="../img/img1-product1.jpg" alt="">
-								</td>
-								<td>Galaxy S8 Plus Black Chính hãng (Likenew)</td>
-								<td>1</td>
-								<td>24.990.000₫ </td>
-								<td>
-									<button>Sửa</button>
-									<button>Xóa</button>
-									<button>Chi thiết</button>
-								</td>
-								
-							</tr><tr>
-								<td>
-								4
-								</td>
-								<td>
-									<img src="../img/img1-product1.jpg" alt="">
-								</td>
-								<td>Acer Nitro 5 AN515 51 739L i7 7700HQ/8GB/1TB/2GB</td>
-								<td>1</td>
-								<td>24.990.000₫ </td>
-								<td>
-									<button>Sửa</button>
-									<button>Xóa</button>
-									<button>Chi thiết</button>
-								</td>
-								
-							</tr>
-							
-						</tbody>
-					</table>
-				</div>
-			</div>
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Quản Lý Nhân Viên</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>STT</th>
-								<th>Họ Và Tên</th>
-								<th>Năm Sinh</th>
-								<th>Số điện thoại</th>
-								<th>Ca làm việc</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									1
-								</td>
-								<td>Trần Viết Cường</td>
-								<td>****</td>
-								<td>0974******</td>
-								<td>Tối</td>
-							</tr>
-							<tr>
-								<td>
-									1
-								</td>
-								<td>Trần Viết Cường</td>
-								<td>****</td>
-								<td>0974******</td>
-								<td>Tối</td>
-							</tr>
-							
-							
-						</tbody>
-					</table>
-				</div>
-			</div>
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Quản Lý Khách Hàng</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>STT</th>
-								<th>Họ Và Tên</th>
+								<th>Họ Đệm</th>
+								<th>Tên</th>
 								<th>Email</th>
-								<th>Số điện thoại</th>
-								<th>Ngày đặt</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>
-									1
-								</td>
-								<td>Trần Viết Cường</td>
-								<td>34tranvietcuong@gmail.com</td>
-								<td>0974******</td>
-								<td>1/1/2023</td>
+							<tr>																	
+								<c:forEach var="contact" items="${contacts}">
+										<td>${contact.id}</td>
+										<td>${contact.first_name}</td>
+										<td>${contact.last_name}</td>
+										<td>${contact.email}</td>
+										<td>${contact.message}</td>
+															
+								</c:forEach>							
 							</tr>
-							<tr>
-								<td>
-									1
-								</td>
-								<td>Trần Viết Cường</td>
-								<td>34tranvietcuong@gmail.com</td>
-								<td>0974******</td>
-								<td>6/6/2022</td>
-							</tr>
-							<tr>
-								<td>
-									1
-								</td>
-								<td>Trần Viết Cường</td>
-								<td>34tranvietcuong@gmail.com</td>
-								<td>0974******</td>
-								<td>6/6/2022</td>
-							</tr>
+							
 							
 						</tbody>
 					</table>
 				</div>
 			</div>
+			
+			
+			
 		</main>
 		<!-- MAIN -->
 	</section>

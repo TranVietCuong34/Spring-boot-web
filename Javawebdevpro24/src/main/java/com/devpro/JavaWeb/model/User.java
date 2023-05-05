@@ -17,27 +17,27 @@ import org.hibernate.annotations.ManyToAny;
 @Entity
 @Table(name = "tbl_users")
 public class User extends BaseEntity{
-	@Column(name = "username", length = 45 , nullable = false)
+	@Column(name = "username", length = 45,  nullable = false)
 	private String username;
-	
-	@Column(name = "password", length = 100 , nullable = false)
+
+	@Column(name = "password", length = 45,  nullable = false)
 	private String password;
 	
-	@Column(name = "email", length = 45 , nullable = false)
+	@Column(name = "email", length = 45,  nullable = false)
 	private String email;
 	
-	@Column(name = "phone", length = 45 , nullable = true)
+	@Column(name = "phone", length = 1000,  nullable = true)
 	private String phone;
 	
-	
-	@Column(name = "shipping_address", length = 1000 , nullable = true)
+	@Column(name = "shipping_address", length = 1000,  nullable = true)
 	private String shipping_address;
 	
 	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinTable(name = "tbl_users_roles",
-				joinColumns = @JoinColumn(name = "user_id"),
-				inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles = new  HashSet<Role>();
+			   joinColumns = @JoinColumn(name= "user_id"),
+			   inverseJoinColumns = @JoinColumn(name="role_id"))
+	private Set<Role> roles = new HashSet<Role>();
+	
 
 	public String getUsername() {
 		return username;
@@ -78,15 +78,5 @@ public class User extends BaseEntity{
 	public void setShipping_address(String shipping_address) {
 		this.shipping_address = shipping_address;
 	}
-
-	public Set<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
-	
-	
 	
 }

@@ -32,7 +32,7 @@ import com.devpro.JavaWeb.*;
 
 @Controller
 public class ContactController extends BaseController {
-	@Autowired
+	@Autowired // => spring  vào springController lấy 1 bean kiểu contactService
 	private ContactService ContactService;
 	/* cách 2 : form spring */
 	@RequestMapping(value = { "/contact" }, method = RequestMethod.GET)

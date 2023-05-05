@@ -1,5 +1,7 @@
 <!-- để gõ được tiếng việt -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,31 +24,31 @@
 	
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="#" class="brand">
+		<a href="${base}/admin/home" class="brand">
 			<i class='bx bxs-smile'></i>
 			<span class="text">Admin</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="#">
+				<a href="${base}/admin/home">
 					<i class='bx bxs-dashboard'></i>
 					<span class="text">Quản lý</span>
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="${base}/admin/product">
 					<i class='bx bxs-shopping-bag-alt'></i>
 					<span class="text">Quản Lý hàng</span>
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="${base}/admin/categories">
 					<i class='bx bxs-doughnut-chart'></i>
-					<span class="text">Quản Lý Nhân Viên</span>
+					<span class="text">Quản Lý Danh Mục</span>
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="${base}/admin/contact">
 					<i class='bx bxs-message-dots'></i>
 					<span class="text">Quản Lý Khách Hàng </span>
 				</a>
@@ -276,7 +278,6 @@
 								<th>Email</th>
 								<th>Số điện thoại</th>
 								<th>Ngày đặt</th>
-								<th>Trạng thái</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -288,7 +289,6 @@
 								<td>34tranvietcuong@gmail.com</td>
 								<td>0974******</td>
 								<td>1/1/2023</td>
-								<td><span class="status completed">Completed</span></td>
 							</tr>
 							<tr>
 								<td>
@@ -298,7 +298,6 @@
 								<td>34tranvietcuong@gmail.com</td>
 								<td>0974******</td>
 								<td>6/6/2022</td>
-								<td><span class="status process">process</span></td>
 							</tr>
 							<tr>
 								<td>
@@ -308,7 +307,6 @@
 								<td>34tranvietcuong@gmail.com</td>
 								<td>0974******</td>
 								<td>6/6/2022</td>
-								<td><span class="status pending">pending</span></td>
 							</tr>
 							
 						</tbody>

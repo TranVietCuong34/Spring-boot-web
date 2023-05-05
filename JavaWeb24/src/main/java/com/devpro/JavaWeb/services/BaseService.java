@@ -25,7 +25,7 @@ public abstract class BaseService<E extends BaseEntity> {
 	//EntityManager là 1 class để quản lí tất cả các Entity.
 	//dùng để query entity, insert, delete entity
 	@PersistenceContext 
-	protected EntityManager entityManager;
+	protected EntityManager entityManager; // để thao tác với cả entity
 	
 	protected abstract Class<E> clazz();
 	

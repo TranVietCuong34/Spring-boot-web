@@ -8,7 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
@@ -43,7 +43,7 @@
 			</li>
 			<li>
 				<a href="${base}/admin/categories">
-					<i class='bx bxs-doughnut-chart'></i>
+					<i class='bx bxs-shopping-bag-alt'></i>
 					<span class="text">Quản Lý Danh Mục</span>
 				</a>
 			</li>
@@ -98,7 +98,7 @@
 				<span class="num">8</span>
 			</a>
 			<a href="#" class="profile">
-				<img src="../img/avta.jpg">
+				<img src="../img/avata-admin.jpg">
 			</a>
 		</nav>
 		<!-- NAVBAR -->
@@ -106,29 +106,6 @@
 		<!-- MAIN -->
 		<main>
 
-			<ul class="box-info">
-				<li>
-					<i class='bx bxs-calendar-check'></i>
-					<span class="text">
-						<h3>1020</h3>
-						<p>New Order</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-group'></i>
-					<span class="text">
-						<h3>2834</h3>
-						<p>Visitors</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-dollar-circle'></i>
-					<span class="text">
-						<h3>$2543</h3>
-						<p>Total Sales</p>
-					</span>
-				</li>
-			</ul>
 
 
 			<div class="table-data">
@@ -138,124 +115,84 @@
 						<i class='bx bx-search'></i>
 						<i class='bx bx-filter'></i>
 					</div>
+					
+					<button class="add-product" onclick="nhan()">Thêm Sản Phẩm</button>
+					<form action="" class="form-add" >
+						<h1>Thêm Sản Phẩm
+							<i class="fa-sharp fa-solid fa-rectangle-xmark close" onclick="dong()"></i>							
+						</h1>
+						
+						<div class="contentform">
+							<div class="leftcontact">
+								<div class="form-group">
+									<p>Tên Sản Phẩm<span>*</span></p>
+									<input type="text" name="nom" id="title" />
+								</div>
+								<div class="form-group">
+									<p>Giá<span>*</span></p>
+									<input type="text" name="nom" id="price" />
+								</div>
+								<div class="form-group">
+									<p>Giá Sale<span>*</span></p>
+									<input type="text" name="nom" id="price_sale" />
+								</div>
+								<div class="form-group">
+									<p>Mô Tả Ngắn<span>*</span></p>
+									<input type="text" name="nom" id="short_description" />
+								</div>
+								<div class="form-group">
+									<p>Mô Tả Chi Tiết<span>*</span></p>
+									<input type="text" name="nom" id="detail_description" />
+								</div>
+								<div class="form-group">
+									<p>Ảnh<span>*</span></p>
+									<input type="file" name="nom" id="avatar" />
+								</div>
+								<div class="form-group">
+									<p>Seo<span>*</span></p>
+									<input type="text" name="nom" id="seo" />
+								</div>
+								<div class="form-group">
+									<p>Xu hướng<span>*</span></p>
+									<input type="text" name="nom" id="is_hot" />
+								</div>
+							
+							</div>										
+						</div>
+						<button type="submit" class="button-contact">Send</button>
+			
+					</form>
 					<table>
 						<thead>
-							<tr>
+							<tr>																	
+								
 								<th>STT</th>
-								<th>Ảnh</th>
 								<th>Tên Sản Phẩm</th>
-								<th>Số Lượng</th>
-								<th>Đơn giá</th>
+								<th>Giá</th>
+								<th>Giá Sale</th>
+								<th>Mô tả </th>
+								<th>Ảnh</th>
+								<th>Xu Hướng</th>
 								<th>Thao tác</th>
+							</tr>			
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>
-								1
-								</td>
-								<td>
-									<img src="../img/img1-product1.jpg" alt="">
-								</td>
-								<td>Samsung Galaxy S9+ 128GB</td>
-								<td>1</td>
-								<td>24.990.000₫ </td>
-								<td>
-									<button>Sửa</button>
-									<button>Xóa</button>
-									<button>Chi tiết</button>
-								</td>
-								
-							</tr>
-							<tr>
-								<td>
-								2
-								</td>
-								<td>
-									<img src="../img/img1-product1.jpg" alt="">
-								</td>
-								<td>Samsung Galaxy S9+ 128GB</td>
-								<td>1</td>
-								<td>24.990.000₫ </td>
-								<td>
-									<button>Sửa</button>
-									<button>Xóa</button>
-									<button>Chi thiết</button>
-								</td>
-								
-							</tr><tr>
-								<td>
-								3
-								</td>
-								<td>
-									<img src="../img/img1-product1.jpg" alt="">
-								</td>
-								<td>Galaxy S8 Plus Black Chính hãng (Likenew)</td>
-								<td>1</td>
-								<td>24.990.000₫ </td>
-								<td>
-									<button>Sửa</button>
-									<button>Xóa</button>
-									<button>Chi thiết</button>
-								</td>
-								
-							</tr><tr>
-								<td>
-								4
-								</td>
-								<td>
-									<img src="../img/img1-product1.jpg" alt="">
-								</td>
-								<td>Acer Nitro 5 AN515 51 739L i7 7700HQ/8GB/1TB/2GB</td>
-								<td>1</td>
-								<td>24.990.000₫ </td>
-								<td>
-									<button>Sửa</button>
-									<button>Xóa</button>
-									<button>Chi thiết</button>
-								</td>
-								
-							</tr>
-							
-						</tbody>
-					</table>
-				</div>
-			</div>
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Quản Lý Nhân Viên</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>STT</th>
-								<th>Họ Và Tên</th>
-								<th>Năm Sinh</th>
-								<th>Số điện thoại</th>
-								<th>Ca làm việc</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									1
-								</td>
-								<td>Trần Viết Cường</td>
-								<td>****</td>
-								<td>0974******</td>
-								<td>Tối</td>
-							</tr>
-							<tr>
-								<td>
-									1
-								</td>
-								<td>Trần Viết Cường</td>
-								<td>****</td>
-								<td>0974******</td>
-								<td>Tối</td>
+							<tr>																	
+								<c:forEach var="product" items="${products}">
+										<td>${product.id}</td>									
+										<td>${product.title}</td>
+										<td>${product.price}</td>
+										<td>${product.price_sale}</td>
+										<td>${product.short_description}</td>
+										<td>${product.avatar}</td>
+										<td>${product.is_hot}</td>
+										<td>
+											<button>Sửa</button>
+											<button>Xóa</button>
+											<button>Chi tiết</button>
+										</td>																																											
+								</c:forEach>							
 							</tr>
 							
 							
@@ -263,56 +200,9 @@
 					</table>
 				</div>
 			</div>
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Quản Lý Khách Hàng</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>STT</th>
-								<th>Họ Và Tên</th>
-								<th>Email</th>
-								<th>Số điện thoại</th>
-								<th>Ngày đặt</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									1
-								</td>
-								<td>Trần Viết Cường</td>
-								<td>34tranvietcuong@gmail.com</td>
-								<td>0974******</td>
-								<td>1/1/2023</td>
-							</tr>
-							<tr>
-								<td>
-									1
-								</td>
-								<td>Trần Viết Cường</td>
-								<td>34tranvietcuong@gmail.com</td>
-								<td>0974******</td>
-								<td>6/6/2022</td>
-							</tr>
-							<tr>
-								<td>
-									1
-								</td>
-								<td>Trần Viết Cường</td>
-								<td>34tranvietcuong@gmail.com</td>
-								<td>0974******</td>
-								<td>6/6/2022</td>
-							</tr>
-							
-						</tbody>
-					</table>
-				</div>
-			</div>
+			
+			
+			
 		</main>
 		<!-- MAIN -->
 	</section>
@@ -321,7 +211,14 @@
 
 	<script>
 		const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
-
+function nhan(){
+			
+			document.querySelector('.form-add').style.display ='block';
+		}
+		function dong(){
+			
+			document.querySelector('.form-add').style.display ='none';
+		}
 allSideMenu.forEach(item=> {
 	const li = item.parentElement;
 

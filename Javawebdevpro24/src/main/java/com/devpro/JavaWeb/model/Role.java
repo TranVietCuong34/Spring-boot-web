@@ -9,23 +9,20 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.ManyToAny;
-
 @Entity
 @Table(name = "tbl_roles")
-public class Role  extends BaseEntity{
-	
-
-	@Column(name = "name", length = 45 ,nullable = false)
+public class Role extends BaseEntity {
+	@Column(name = "name", length = 45,  nullable = false)
 	private String name;
 	
-	@Column(name = "description", length = 45 ,nullable = false)
+	@Column(name = "description", length = 45,  nullable = false)
 	private String description;
 	
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,mappedBy = "roles")
-	private Set<User> users  = new HashSet<User>();
-	
+	@ManyToMany(cascade = CascadeType.ALL,
+				fetch = FetchType.EAGER,
+				mappedBy = "roles")
+	private Set<User> users = new HashSet<User>();
+
 	public String getName() {
 		return name;
 	}
@@ -49,4 +46,5 @@ public class Role  extends BaseEntity{
 	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
+	
 }
