@@ -254,7 +254,7 @@
 						<p>
 							Chọn file
 						</p>
-						<input type="file"  class="form-control" name=contactUsFile id="fileContact" ></input>
+						<input type="file"  class="form-control" name="contactUsFile" id="fileContact" ></input>
 							
 					</div>
 				</div>

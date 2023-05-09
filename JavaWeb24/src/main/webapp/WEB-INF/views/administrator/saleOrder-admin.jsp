@@ -98,7 +98,7 @@
 				<span class="num">8</span>
 			</a>
 			<a href="#" class="profile">
-				<img src="../img/avta.jpg">
+				<img src="../img/avata-admin.jpg">
 			</a>
 		</nav>
 		<!-- NAVBAR -->
@@ -106,115 +106,9 @@
 		<!-- MAIN -->
 		<main>
 
-			<ul class="box-info">
-				<li>
-					<i class='bx bxs-calendar-check'></i>
-					<span class="text">
-						<h3>1020</h3>
-						<p>New Order</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-group'></i>
-					<span class="text">
-						<h3>2834</h3>
-						<p>Visitors</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-dollar-circle'></i>
-					<span class="text">
-						<h3>$2543</h3>
-						<p>Total Sales</p>
-					</span>
-				</li>
-			</ul>
 
 
 			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Quản Lý Sản Phẩm</h3>
-						<i class='bx bx-search'></i>
-						<i class='bx bx-filter'></i>
-					</div>
-					<button class="add-product">
-					<a href="${base }/admin/product">Thêm Sản Phẩm</a>
-					
-					</button>
-					<table>
-						<thead>
-							<tr>
-								<th>STT</th>
-								<th>Tên</th>
-								<th>Giá</th>
-								<th>Giá Sale</th>
-								<th>Mô tả</th>
-								<th>Thao tác</th>
-							</tr>
-						</thead>
-						<tbody>
-																								
-								<c:forEach var="product" items="${products}">
-									<tr>
-										<td>${product.id}</td>									
-										<td>${product.title}</td>
-										<td>${product.price}</td>
-										<td>${product.priceSale}</td>
-										<td>${product.shortDes}</td>
-										
-										
-										<td>
-											<button>Sửa</button>
-											<button>Xóa</button>
-											<button>Chi tiết</button>
-										</td>
-									</tr>																																											
-								</c:forEach>							
-							
-						</tbody>
-					</table>
-				</div>
-			</div>
-			
-			
-			
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Quản Lý Danh Mục</h3>
-						<i class='bx bx-search'></i>
-						<i class='bx bx-filter'></i>
-					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>Tên</th>
-								<th>Mô tả</th>
-								<th>SEO</th>
-								<th>Thao tác</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>																	
-								<c:forEach var="category" items="${categories}">
-										<td>${category.name}</td>
-										<td>${category.description}</td>
-										<td>${category.seo}</td>
-										<td>
-											<button>Sửa</button>
-											<button>Xóa</button>
-											<button>Chi tiết</button>
-										</td>										
-								</c:forEach>							
-							</tr>
-							
-							
-						</tbody>
-					</table>
-				</div>
-			</div>
-		<div class="table-data">
 				<div class="order">
 					<div class="head">
 						<h3>Quản Lý Khách Hàng</h3>
@@ -256,6 +150,9 @@
 					</table>
 				</div>
 			</div>
+			
+			
+			
 		</main>
 		<!-- MAIN -->
 	</section>

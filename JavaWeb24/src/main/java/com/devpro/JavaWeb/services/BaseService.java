@@ -37,7 +37,7 @@ public abstract class BaseService<E extends BaseEntity> {
 	@Transactional
 	public E saveOrUpdate(E entity) {
 		if (entity.getId() == null || entity.getId() <= 0) {
-			if(entity.getCreated_date() == null) entity.setCreated_date(new Date());
+			if(entity.getCreatedDate() == null) entity.setCreatedDate(new Date());
 			entityManager.persist(entity); // thêm mới
 			return entity;
 		} else {

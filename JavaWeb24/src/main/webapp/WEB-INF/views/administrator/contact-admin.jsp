@@ -36,7 +36,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="${base}/admin/product">
+				<a href="${base}/admin/manage/product">
 					<i class='bx bxs-shopping-bag-alt'></i>
 					<span class="text">Quản Lý hàng</span>
 				</a>
@@ -48,7 +48,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="${base}/admin/contact">
+				<a href="${base}/admin/saleOrder">
 					<i class='bx bxs-message-dots'></i>
 					<span class="text">Quản Lý Khách Hàng </span>
 				</a>

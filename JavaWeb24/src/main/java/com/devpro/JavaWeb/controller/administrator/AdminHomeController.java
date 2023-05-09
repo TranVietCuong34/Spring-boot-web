@@ -12,30 +12,44 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.devpro.JavaWeb.controller.BaseController;
 import com.devpro.JavaWeb.model.Categories;
 import com.devpro.JavaWeb.model.Contact;
 import com.devpro.JavaWeb.model.Product;
+import com.devpro.JavaWeb.model.SaleOrder;
 import com.devpro.JavaWeb.services.impl.CategoriesService;
 import com.devpro.JavaWeb.services.impl.ContactService;
 import com.devpro.JavaWeb.services.impl.ProductService;
+import com.devpro.JavaWeb.services.impl.SaleorderSrervice;
 
 @Controller
-public class adminProduct extends BaseController {
+public class AdminHomeController {
+	
 	@Autowired
-	private ProductService  productService;
-	@RequestMapping(value = {"/admin/product"}, method = RequestMethod.GET)
+	private ProductService productService;
+	
+	@Autowired
+	private SaleorderSrervice saleorderSrervice;
+	
+	@Autowired
+	private ContactService contactService;
+	
+	@Autowired
+	private CategoriesService categoriesService;
+	
+	@RequestMapping(value = {"/admin/home"}, method = RequestMethod.GET)
 	public String login(final Model model, final HttpServletRequest request, final HttpServletResponse response)
 		throws IOException{
 		
-		// lấy danh sách categories từ database và trả về view thông qua model
 		List<Product> products = productService.findAll();
-//		List<Contact> contacts = contactService.getEntitiesByNativeSQL("select * from tbl_contact");
-
+		List<SaleOrder> saleOrders = saleorderSrervice.findAll();
+		List<Contact> contacts = contactService.findAll();
+		List<Categories> categories = categoriesService.findAll();
 		
-		
-		//đẩy xuống view để xử lý
 		model.addAttribute("products", products);
-		return "administrator/product-admin";
+		model.addAttribute("saleOrders", saleOrders);
+		model.addAttribute("contacts", contacts);
+		model.addAttribute("categories", categories);
+		
+		return "administrator/admin";
 	}
 }

@@ -9,17 +9,19 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
 @Entity
 @Table(name = "tbl_roles")
 public class Role extends BaseEntity {
-	@Column(name = "name", length = 45,  nullable = false)
+
+	@Column(name = "name", length = 45, nullable = false)
 	private String name;
-	
-	@Column(name = "description", length = 45,  nullable = false)
+
+	@Column(name = "description", length = 45, nullable = false)
 	private String description;
-	
-	@ManyToMany(cascade = CascadeType.ALL,
-				fetch = FetchType.EAGER,
+
+	@ManyToMany(cascade = CascadeType.ALL, 
+				fetch = FetchType.EAGER, 
 				mappedBy = "roles")
 	private Set<User> users = new HashSet<User>();
 

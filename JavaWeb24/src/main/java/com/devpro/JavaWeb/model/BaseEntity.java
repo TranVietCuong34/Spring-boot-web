@@ -8,27 +8,31 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @MappedSuperclass
 public abstract class BaseEntity {
-	@Id 	//khóa chính
-	@GeneratedValue(strategy = GenerationType.IDENTITY) //tăng tự động
-	@Column(name = "id")
+
+	@Id // khóa chính
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment
+	@Column(name = "id") // tên colunm mapping với property này
 	private Integer id;
-	
-	@Column(name = "status",nullable = true)
-	private boolean status;
-	
-	@Column(name = "created_date",nullable = true)
-	private Date created_date;
-	
-	@Column(name = "updated_date",nullable = true)
-	private Date updated_date;
-	
-	@Column(name = "created_by",nullable = true)
-	private Integer created_by;
-	
-	@Column(name = "updated_by",nullable = true)
-	private Integer updated_by;
+
+	@Column(name = "status", nullable = true)
+	private Boolean status = Boolean.TRUE;
+
+	@Column(name = "created_by", nullable = true)
+	private Integer createdBy;
+
+	@Column(name = "updated_by", nullable = true)
+	private Integer updatedBy;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "created_date", nullable = true)
+	private Date createdDate;
+
+	@Column(name = "updated_date", nullable = true)
+	private Date updatedDate;
 
 	public Integer getId() {
 		return id;
@@ -38,44 +42,45 @@ public abstract class BaseEntity {
 		this.id = id;
 	}
 
-	public boolean isStatus() {
+	public Boolean getStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(Boolean status) {
 		this.status = status;
 	}
 
-	public Date getCreated_date() {
-		return created_date;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreated_date(Date created_date) {
-		this.created_date = created_date;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
-	public Date getUpdated_date() {
-		return updated_date;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdated_date(Date updated_date) {
-		this.updated_date = updated_date;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
-	public Integer getCreated_by() {
-		return created_by;
+	public Date getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setCreated_by(Integer created_by) {
-		this.created_by = created_by;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
-	public Integer getUpdated_by() {
-		return updated_by;
+	public Date getUpdatedDate() {
+		return updatedDate;
 	}
 
-	public void setUpdated_by(Integer updated_by) {
-		this.updated_by = updated_by;
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
 	}
+		
 	
 }

@@ -7,26 +7,37 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_category")
-public class Categories extends BaseEntity{
-	@Column(name = "name" , length = 100, nullable = false)
+public class Categories extends BaseEntity {
+	@Column(name = "name", length = 100, nullable = false)
 	private String name;
-	
-	@Column(name = "description" , length = 100, nullable = false)
+
+	@Column(name = "description", length = 100, nullable = false)
 	private String description;
-	
-	@Column(name = "seo" , length = 100, nullable = true)
+
+	@Column(name = "seo", length = 1000, nullable = true)
 	private String seo;
-	
-	@OneToMany(cascade = CascadeType.ALL,
-			   fetch = FetchType.LAZY,
+
+	@OneToMany(cascade = CascadeType.ALL, 
+			   fetch = FetchType.LAZY, 
 			   mappedBy = "categories")
 	private Set<Product> products = new HashSet<Product>();
-
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "parent_id")
+	private Categories parent;
+	
+	@OneToMany(cascade = CascadeType.ALL, 
+			   fetch = FetchType.EAGER, 
+			   mappedBy = "parent")
+	private Set<Categories> childs = new HashSet<Categories>();
+	
 	public String getName() {
 		return name;
 	}
@@ -58,5 +69,21 @@ public class Categories extends BaseEntity{
 	public void setProducts(Set<Product> products) {
 		this.products = products;
 	}
-	
+
+	public Set<Categories> getChilds() {
+		return childs;
+	}
+
+	public void setChilds(Set<Categories> childs) {
+		this.childs = childs;
+	}
+
+	public Categories getParent() {
+		return parent;
+	}
+
+	public void setParent(Categories parent) {
+		this.parent = parent;
+	}
+
 }

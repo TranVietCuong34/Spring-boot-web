@@ -1,6 +1,5 @@
 package com.devpro.JavaWeb.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,17 +9,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_products_images")
-public class Product_image extends BaseEntity {
-
-	@Column(name = "title", length = 100, nullable = false)
+public class ProductImages extends BaseEntity {
+	
+	@Column(name = "title", nullable = false)
 	private String title;
 
-	@Column(name = "path", length = 100, nullable = false)
+	@Column(name = "path", nullable = false)
 	private String path;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "product_id")
-	private Product product_id;
+	private Product product;
 
 	public String getTitle() {
 		return title;
@@ -38,12 +37,12 @@ public class Product_image extends BaseEntity {
 		this.path = path;
 	}
 
-	public Product getProduct_id() {
-		return product_id;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setProduct_id(Product product_id) {
-		this.product_id = product_id;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 }

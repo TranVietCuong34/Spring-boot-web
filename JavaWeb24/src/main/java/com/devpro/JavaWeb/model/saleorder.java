@@ -9,44 +9,43 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_saleorder")
-public class saleorder extends BaseEntity {
-	@Column(name = "code", length = 100, nullable = false)
+public class SaleOrder extends BaseEntity {
+	@Column(name = "code")
 	private String code;
 
-	@Column(name = "total", precision = 13, scale = 2, nullable = true)
+	@Column(name = "total", precision = 13, scale = 2, nullable = false)
 	private BigDecimal total;
 
-	@Column(name = "customer_name", length = 100, nullable = false)
-	private String customer_name;
+	@Column(name = "customer_name")
+	private String customerName;
 
-	@Column(name = "customer_address", length = 100, nullable = false)
-	private String customer_address;
+	@Column(name = "customer_address")
+	private String customerAddress;
 
-	@Column(name = "seo", length = 1000, nullable = false)
+	@Column(name = "customer_phone")
+	private String customerPhone;
+
+	@Column(name = "cutomer_email")
+	private String customerEmail;
+
+	@Column(name = "seo")
 	private String seo;
 
-	@Column(name = "customer_phone", length = 100, nullable = false)
-	private String customer_phone;
+	@OneToMany(cascade = CascadeType.ALL, 
+			   mappedBy = "saleOrder", 
+			   fetch = FetchType.EAGER)
+	private Set<SaleOrderProducts> saleOrderProducts = new HashSet<SaleOrderProducts>();
 
-	@Column(name = "cutomer_email", length = 100, nullable = false)
-	private String cutomer_email;
-
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
-	private User user_id;
+	private User user;
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable( name = "tbl_saleorder_products",
-				joinColumns = @JoinColumn(name = "saleorder_id"), 
-				inverseJoinColumns = @JoinColumn(name = "product_id"))
-	private Set<Product> products = new HashSet<Product>();
 	public String getCode() {
 		return code;
 	}
@@ -63,20 +62,20 @@ public class saleorder extends BaseEntity {
 		this.total = total;
 	}
 
-	public String getCustomer_name() {
-		return customer_name;
+	public String getCustomerName() {
+		return customerName;
 	}
 
-	public void setCustomer_name(String customer_name) {
-		this.customer_name = customer_name;
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
 
-	public String getCustomer_address() {
-		return customer_address;
+	public String getCustomerAddress() {
+		return customerAddress;
 	}
 
-	public void setCustomer_address(String customer_address) {
-		this.customer_address = customer_address;
+	public void setCustomerAddress(String customerAddress) {
+		this.customerAddress = customerAddress;
 	}
 
 	public String getSeo() {
@@ -87,28 +86,36 @@ public class saleorder extends BaseEntity {
 		this.seo = seo;
 	}
 
-	public String getCustomer_phone() {
-		return customer_phone;
+	public Set<SaleOrderProducts> getSaleOrderProducts() {
+		return saleOrderProducts;
 	}
 
-	public void setCustomer_phone(String customer_phone) {
-		this.customer_phone = customer_phone;
+	public void setSaleOrderProducts(Set<SaleOrderProducts> saleOrderProducts) {
+		this.saleOrderProducts = saleOrderProducts;
 	}
 
-	public String getCutomer_email() {
-		return cutomer_email;
+	public String getCustomerPhone() {
+		return customerPhone;
 	}
 
-	public void setCutomer_email(String cutomer_email) {
-		this.cutomer_email = cutomer_email;
+	public void setCustomerPhone(String customerPhone) {
+		this.customerPhone = customerPhone;
 	}
 
-	public User getUser_id() {
-		return user_id;
+	public String getCustomerEmail() {
+		return customerEmail;
 	}
 
-	public void setUser_id(User user_id) {
-		this.user_id = user_id;
+	public void setCustomerEmail(String customerEmail) {
+		this.customerEmail = customerEmail;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

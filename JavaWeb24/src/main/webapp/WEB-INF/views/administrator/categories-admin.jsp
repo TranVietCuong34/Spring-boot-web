@@ -36,19 +36,19 @@
 				</a>
 			</li>
 			<li>
-				<a href="${base}/admin/product">
+				<a href="${base}/admin/manage/product">
 					<i class='bx bxs-shopping-bag-alt'></i>
 					<span class="text">Quản Lý hàng</span>
 				</a>
 			</li>
 			<li>
 				<a href="${base}/admin/categories">
-					<i class='bx bxs-shopping-bag-alt'></i>
+					<i class='bx bxs-doughnut-chart'></i>
 					<span class="text">Quản Lý Danh Mục</span>
 				</a>
 			</li>
 			<li>
-				<a href="${base}/admin/contact">
+				<a href="${base}/admin/saleOrder">
 					<i class='bx bxs-message-dots'></i>
 					<span class="text">Quản Lý Khách Hàng </span>
 				</a>

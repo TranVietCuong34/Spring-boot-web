@@ -52,8 +52,8 @@ public class ContactController extends BaseController {
 			@RequestParam("contactUsFile") MultipartFile contactUsFile) throws IOException {
 
 		Contact contact = new Contact();
-		contact.setFirst_name(contactUs.getFirtName());
-		contact.setLast_name(contactUs.getName());
+		contact.setFirstName(contactUs.getFirtName());
+		contact.setLastName(contactUs.getName());
 		contact.setEmail(contactUs.getEmail());
 		contact.setMessage(contactUs.getMessage());
 		ContactService.saveOrUpdate(contact); // lưu vào database

@@ -14,27 +14,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.devpro.JavaWeb.controller.BaseController;
 import com.devpro.JavaWeb.model.Categories;
-import com.devpro.JavaWeb.model.Contact;
 import com.devpro.JavaWeb.services.impl.CategoriesService;
-import com.devpro.JavaWeb.services.impl.ContactService;
+
 @Controller
-public class adminContact extends BaseController{
-	
+public class AdminCategory extends BaseController{
+	//inject một bean(service ) vào một bean khác(controller)
 	@Autowired
-	private ContactService  contactService;
-	@RequestMapping(value = {"/admin/contact"}, method = RequestMethod.GET)
+	private CategoriesService  categoriesService;
+	
+	@RequestMapping(value = {"/admin/categories"}, method = RequestMethod.GET)
 	public String login(final Model model, final HttpServletRequest request, final HttpServletResponse response)
 		throws IOException{
 		
 		// lấy danh sách categories từ database và trả về view thông qua model
-//		List<Contact> contacts = contactService.findAll();
-		List<Contact> contacts = contactService.getEntitiesByNativeSQL("select * from tbl_contact");
-		
-		
-		
+		List<Categories> categories = categoriesService.findAll();
 		//đẩy xuống view để xử lý
-		model.addAttribute("contacts", contacts);
-		
-		return "administrator/contact-admin";
+		model.addAttribute("categories", categories);
+		return "administrator/categories-admin";
 	}
 }

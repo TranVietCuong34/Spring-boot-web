@@ -79,8 +79,8 @@ public class ContactController extends BaseController {
 		
 		//ghi dữ liệu vào database
 		Contact contact = new Contact();
-		contact.setFirst_name(contactUs.getFirtName());
-		contact.setFirst_name(contactUs.getName());
+		contact.setFirstName(contactUs.getFirtName());
+		contact.setLastName(contactUs.getName());
 		contact.setEmail(contactUs.getEmail());
 		contact.setMessage(contactUs.getMessage());
 		contactService.saveOrUpdate(contact);//lưu vào database

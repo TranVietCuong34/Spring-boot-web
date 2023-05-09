@@ -8,7 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
@@ -36,19 +36,19 @@
 				</a>
 			</li>
 			<li>
-				<a href="${base}/admin/product">
+				<a href="${base}/admin/manage/product">
 					<i class='bx bxs-shopping-bag-alt'></i>
 					<span class="text">Quản Lý hàng</span>
 				</a>
 			</li>
 			<li>
 				<a href="${base}/admin/categories">
-					<i class='bx bxs-shopping-bag-alt'></i>
+					<i class='bx bxs-doughnut-chart'></i>
 					<span class="text">Quản Lý Danh Mục</span>
 				</a>
 			</li>
 			<li>
-				<a href="${base}/admin/contact">
+				<a href="${base}/admin/saleOrder">
 					<i class='bx bxs-message-dots'></i>
 					<span class="text">Quản Lý Khách Hàng </span>
 				</a>
@@ -98,15 +98,13 @@
 				<span class="num">8</span>
 			</a>
 			<a href="#" class="profile">
-				<img src="../img/avata-admin.jpg">
+				<img src="../img/avta.jpg">
 			</a>
 		</nav>
 		<!-- NAVBAR -->
 
 		<!-- MAIN -->
 		<main>
-
-
 
 			<div class="table-data">
 				<div class="order">
@@ -115,92 +113,43 @@
 						<i class='bx bx-search'></i>
 						<i class='bx bx-filter'></i>
 					</div>
+					<button class="add-product">
+					<a href="${base }/admin/product">Thêm Sản Phẩm</a>
 					
-					<button class="add-product" onclick="nhan()">Thêm Sản Phẩm</button>
-					<form action="" class="form-add" >
-						<h1>Thêm Sản Phẩm
-							<i class="fa-sharp fa-solid fa-rectangle-xmark close" onclick="dong()"></i>							
-						</h1>
-						
-						<div class="contentform">
-							<div class="leftcontact">
-								<div class="form-group">
-									<p>Tên Sản Phẩm<span>*</span></p>
-									<input type="text" name="nom" id="title" />
-								</div>
-								<div class="form-group">
-									<p>Giá<span>*</span></p>
-									<input type="text" name="nom" id="price" />
-								</div>
-								<div class="form-group">
-									<p>Giá Sale<span>*</span></p>
-									<input type="text" name="nom" id="price_sale" />
-								</div>
-								<div class="form-group">
-									<p>Mô Tả Ngắn<span>*</span></p>
-									<input type="text" name="nom" id="short_description" />
-								</div>
-								<div class="form-group">
-									<p>Mô Tả Chi Tiết<span>*</span></p>
-									<input type="text" name="nom" id="detail_description" />
-								</div>
-								<div class="form-group">
-									<p>Ảnh<span>*</span></p>
-									<input type="file" name="nom" id="avatar" />
-								</div>
-								<div class="form-group">
-									<p>Seo<span>*</span></p>
-									<input type="text" name="nom" id="seo" />
-								</div>
-								<div class="form-group">
-									<p>Xu hướng<span>*</span></p>
-									<input type="text" name="nom" id="is_hot" />
-								</div>
-							
-							</div>										
-						</div>
-						<button type="submit" class="button-contact">Send</button>
-			
-					</form>
+					</button>
 					<table>
 						<thead>
-							<tr>																	
-								
+							<tr>
 								<th>STT</th>
-								<th>Tên Sản Phẩm</th>
+								<th>Tên</th>
 								<th>Giá</th>
 								<th>Giá Sale</th>
-								<th>Mô tả </th>
-								<th>Ảnh</th>
-								<th>Xu Hướng</th>
+								<th>Mô tả</th>
 								<th>Thao tác</th>
-							</tr>			
 							</tr>
 						</thead>
 						<tbody>
-							<tr>																	
+																								
 								<c:forEach var="product" items="${products}">
-										<td>${product.id}</td>									
+									<tr>	<td>${product.id}</td>									
 										<td>${product.title}</td>
 										<td>${product.price}</td>
-										<td>${product.price_sale}</td>
-										<td>${product.short_description}</td>
-										<td>${product.avatar}</td>
-										<td>${product.is_hot}</td>
+										<td>${product.priceSale}</td>
+										<td>${product.shortDes}</td>
+										
+										
 										<td>
 											<button>Sửa</button>
 											<button>Xóa</button>
 											<button>Chi tiết</button>
-										</td>																																											
+										</td>
+									</tr>																																											
 								</c:forEach>							
-							</tr>
-							
 							
 						</tbody>
 					</table>
 				</div>
 			</div>
-			
 			
 			
 		</main>
@@ -211,14 +160,7 @@
 
 	<script>
 		const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
-function nhan(){
-			
-			document.querySelector('.form-add').style.display ='block';
-		}
-		function dong(){
-			
-			document.querySelector('.form-add').style.display ='none';
-		}
+
 allSideMenu.forEach(item=> {
 	const li = item.parentElement;
 
