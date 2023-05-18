@@ -31,6 +31,9 @@ public class MVCConf implements WebMvcConfigurer {
 		
 		//bất cứ request nào có dạng: http://localhost:8080/css/abc.css sẽ vào folder src/main/resource/img
 		registry.addResourceHandler("/img/**").addResourceLocations("classpath:/img/");
+		
+		// đăng kí thêm folder upload
+		registry.addResourceHandler("/upload/**").addResourceLocations("file:"+"F:/upload/");
 	}
 	
 	/*định nghĩa view engine*/

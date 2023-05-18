@@ -13,7 +13,7 @@
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
-     <link rel="stylesheet" href="${base}/css/admin.css">
+    <jsp:include page="/WEB-INF/views/administrator/layout/css.jsp"></jsp:include>
 
 	<title>AdminHub</title>
 </head>
@@ -30,35 +30,30 @@
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="${base}/admin/home">
+				<a href="${base}/admin/manager/home">
 					<i class='bx bxs-dashboard'></i>
 					<span class="text">Quản lý</span>
 				</a>
 			</li>
 			<li>
-				<a href="${base}/admin/manage/product">
+				<a href="${base}/admin/product/list">
 					<i class='bx bxs-shopping-bag-alt'></i>
 					<span class="text">Quản Lý hàng</span>
 				</a>
 			</li>
 			<li>
-				<a href="${base}/admin/categories">
+				<a href="${base}/admin/manager/categories">
 					<i class='bx bxs-doughnut-chart'></i>
 					<span class="text">Quản Lý Danh Mục</span>
 				</a>
 			</li>
 			<li>
-				<a href="${base}/admin/saleOrder">
+				<a href="${base}/admin/manager/saleOrder">
 					<i class='bx bxs-message-dots'></i>
 					<span class="text">Quản Lý Khách Hàng </span>
 				</a>
 			</li>
-			<li>
-				<a href="#">
-					<i class='bx bxs-group'></i>
-					<span class="text">Quản Lý Hóa Đơn</span>
-				</a>
-			</li>
+			
 		</ul>
 		<ul class="side-menu">
 			<li>
@@ -98,7 +93,7 @@
 				<span class="num">8</span>
 			</a>
 			<a href="#" class="profile">
-				<img src="../img/avata-admin.jpg">
+				<img src="">
 			</a>
 		</nav>
 		<!-- NAVBAR -->
@@ -149,84 +144,9 @@
 	</section>
 	<!-- CONTENT -->
 
-
+	<jsp:include page="/WEB-INF/views/administrator/layout/js.jsp"></jsp:include>
 	<script>
-		const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
-
-allSideMenu.forEach(item=> {
-	const li = item.parentElement;
-
-	item.addEventListener('click', function () {
-		allSideMenu.forEach(i=> {
-			i.parentElement.classList.remove('active');
-		})
-		li.classList.add('active');
-	})
-});
-
-
-
-
-// TOGGLE SIDEBAR
-const menuBar = document.querySelector('#content nav .bx.bx-menu');
-const sidebar = document.getElementById('sidebar');
-
-menuBar.addEventListener('click', function () {
-	sidebar.classList.toggle('hide');
-})
-
-
-
-
-
-
-
-const searchButton = document.querySelector('#content nav form .form-input button');
-const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
-const searchForm = document.querySelector('#content nav form');
-
-searchButton.addEventListener('click', function (e) {
-	if(window.innerWidth < 576) {
-		e.preventDefault();
-		searchForm.classList.toggle('show');
-		if(searchForm.classList.contains('show')) {
-			searchButtonIcon.classList.replace('bx-search', 'bx-x');
-		} else {
-			searchButtonIcon.classList.replace('bx-x', 'bx-search');
-		}
-	}
-})
-
-
-
-
-
-if(window.innerWidth < 768) {
-	sidebar.classList.add('hide');
-} else if(window.innerWidth > 576) {
-	searchButtonIcon.classList.replace('bx-x', 'bx-search');
-	searchForm.classList.remove('show');
-}
-
-
-window.addEventListener('resize', function () {
-	if(this.innerWidth > 576) {
-		searchButtonIcon.classList.replace('bx-x', 'bx-search');
-		searchForm.classList.remove('show');
-	}
-})
-
-
-
-const switchMode = document.getElementById('switch-mode');
-
-switchMode.addEventListener('change', function () {
-	if(this.checked) {
-		document.body.classList.add('dark');
-	} else {
-		document.body.classList.remove('dark');
-	}
-})
+		
 	</script>
 </body>
 

@@ -1,14 +1,15 @@
 <!-- để gõ được tiếng việt -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+ 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
@@ -24,13 +25,13 @@
 	
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="${base}/admin/home" class="brand">
+		<a href="${base}/admin/manager/home" class="brand">
 			<i class='bx bxs-smile'></i>
 			<span class="text">Admin</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="${base}/admin/home">
+				<a href="${base}/admin/manager/home">
 					<i class='bx bxs-dashboard'></i>
 					<span class="text">Quản lý</span>
 				</a>
@@ -42,13 +43,13 @@
 				</a>
 			</li>
 			<li>
-				<a href="${base}/admin/categories">
+				<a href="${base}/admin/manager/categories">
 					<i class='bx bxs-doughnut-chart'></i>
 					<span class="text">Quản Lý Danh Mục</span>
 				</a>
 			</li>
 			<li>
-				<a href="${base}/admin/saleOrder">
+				<a href="${base}/admin/manager/saleOrder">
 					<i class='bx bxs-message-dots'></i>
 					<span class="text">Quản Lý Khách Hàng </span>
 				</a>
@@ -98,7 +99,7 @@
 				<span class="num">8</span>
 			</a>
 			<a href="#" class="profile">
-				<img src="../img/avta.jpg">
+				<img src="../img/avata-admin.jpg">
 			</a>
 		</nav>
 		<!-- NAVBAR -->
@@ -106,50 +107,61 @@
 		<!-- MAIN -->
 		<main>
 
+
+
 			<div class="table-data">
 				<div class="order">
-					<div class="head">
-						<h3>Quản Lý Sản Phẩm</h3>
-						<i class='bx bx-search'></i>
-						<i class='bx bx-filter'></i>
-					</div>
-					<button class="add-product">
-					<a href="${base }/admin/product">Thêm Sản Phẩm</a>
-					
-					</button>
-					<table>
-						<thead>
-							<tr>
-								<th>STT</th>
-								<th>Tên</th>
-								<th>Giá</th>
-								<th>Giá Sale</th>
-								<th>Mô tả</th>
-								<th>Thao tác</th>
-							</tr>
-						</thead>
-						<tbody>
-																								
-								<c:forEach var="product" items="${products}">
-									<tr>	<td>${product.id}</td>									
-										<td>${product.title}</td>
-										<td>${product.price}</td>
-										<td>${product.priceSale}</td>
-										<td>${product.shortDes}</td>
-										
-										
-										<td>
-											<button>Sửa</button>
-											<button>Xóa</button>
-											<button>Chi tiết</button>
-										</td>
-									</tr>																																											
-								</c:forEach>							
+					<sf:form method="post" action="${base}/admin/add-product/saveOrUpdate" class="form-add"  modelAttribute="product" enctype="multipart/form-data">
+						<h1>Thêm Sản Phẩm</h1>		
+						<div class="contentform">
+							<div class="leftcontact">
+								<div class="form-group">
+									<p>Product Id<span>*</span></p>
+									<sf:input path="id" type="text" name="nom" id="title" />
+								</div>
+								<div class="form-group mb-2">
+									<p>Category<span>*</span></p>
+										<sf:select path="categories.id" class="form-control" id="category">
+											<sf:options items="${categories }" itemValue="id" itemLabel="name" />									
+										</sf:select>
+								</div>
+								<div class="form-group">
+									<p>Title<span>*</span></p>
+									<sf:input path="title" type="text" name="nom" id="title" />
+								</div>
+								<div class="form-group">
+									<p>Price<span>*</span></p>
+									<sf:input path="price" type="text" name="nom" id="price" />
+								</div>
+								<div class="form-group">
+									<p>Price Sale<span>*</span></p>
+									<sf:input path="priceSale" type="text" name="nom" id="price_sale" />
+								</div>
+								<div class="form-group">
+									<p>Description<span>*</span></p>
+									<sf:input path="shortDes" type="text" name="nom" id="short_description" />
+								</div>
+								<div class="form-group">
+									<p>Details<span>*</span></p>
+									<sf:input path="details" type="text" name="nom" id="detail_description" />
+								</div>							
+								<div class="form-group">
+									<p>Avatar<span>*</span></p>
+									<input type="file" id="fileProductAvatar" name="productAvatar" class="form-control">
+								</div>
+								<div class="form-group">
+									<p>Picture<span>*</span></p>
+									<input type="file" id="fileProductPictures" name="productPictures" class="form-control" multiple="multiple">
+								</div>
 							
-						</tbody>
-					</table>
+							</div>										
+						</div>
+						<button type="submit" class="button-contact">Send</button>
+			
+					</sf:form>				
 				</div>
 			</div>
+			
 			
 			
 		</main>
@@ -160,7 +172,8 @@
 
 	<script>
 		const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
-
+	
+				
 allSideMenu.forEach(item=> {
 	const li = item.parentElement;
 

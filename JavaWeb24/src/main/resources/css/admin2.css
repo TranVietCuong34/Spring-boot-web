@@ -431,11 +431,9 @@ body {
 	margin-right: 100px;
 	margin-bottom: 40px;
 	padding: 5px;
-	border: 1px solid black;
-	cursor: pointer;
-	
 
 }
+.form-add{display: none;}
 form h1 {
     font-size: 18px;
     background: #3C91E6 none repeat scroll 0% 0%;
@@ -447,13 +445,19 @@ form h1 {
     text-align:left;
 	position: relative;
   }
+.close{
+	position: absolute;
+	top: -1px;
+	right: 0;
+	font-size: 30px;
+	background-color: #3C91E6;
+	cursor: pointer;
+} 
 
 form {
     border-radius: 5px;
-    max-width:700px;
     width:100%;
     margin: 5% auto;
-    background-color: #FFFFFF;
     overflow: hidden;
 }
 form h1{
@@ -480,12 +484,11 @@ h1 {
     overflow: hidden;
     clear: both;
 } 
-.form-group input,
-.form-control {
+.form-group input {
     border-radius: 0px 5px 5px 0px;
     border: 1px solid #eee;
     margin-bottom: 15px;
-    width: 75%;
+    width: 100%;
     height: 40px;
     float: left;
     padding: 0px 15px;

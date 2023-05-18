@@ -57,7 +57,7 @@ public class AdminProductController extends BaseController{
 		//trả về danh sách category 
 		model.addAttribute("categories", categoriesService.findAll());
 		
-		return "administrator/add_product_admin";
+		return "administrator/add_product";
 	}
 	
 	@RequestMapping(value = {"/admin/product/saveOrUpdate"}, method = RequestMethod.POST)

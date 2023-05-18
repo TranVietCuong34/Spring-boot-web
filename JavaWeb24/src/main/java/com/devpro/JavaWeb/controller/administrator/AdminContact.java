@@ -22,7 +22,7 @@ public class AdminContact extends BaseController{
 	
 	@Autowired
 	private ContactService  contactService;
-	@RequestMapping(value = {"/admin/contact"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/admin/manager/contact"}, method = RequestMethod.GET)
 	public String login(final Model model, final HttpServletRequest request, final HttpServletResponse response)
 		throws IOException{
 		

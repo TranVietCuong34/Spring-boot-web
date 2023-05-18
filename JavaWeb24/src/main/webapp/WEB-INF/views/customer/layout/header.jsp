@@ -1,6 +1,7 @@
 <!-- để gõ được tiếng việt -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
 <header>
@@ -20,11 +21,11 @@
 				<li>
 					<%--  <a href="${base}/contact-us-spring-form"> <p>
 						<img src="img/icon-speaker.jpg" alt="">
-					</p>Gửi phản hồi về sản phẩm </a> --%>
-					
-					<a href="${base}/contact"> <p>
-						<img src="img/icon-speaker.jpg" alt="">
-					</p>Gửi phản hồi về sản phẩm </a>
+					</p>Gửi phản hồi về sản phẩm </a> --%> <a href="${base}/contact">
+						<p>
+							<img src="img/icon-speaker.jpg" alt="">
+						</p>Gửi phản hồi về sản phẩm
+				</a>
 				</li>
 				<li><a href=""> <span><img
 							src="img/icon-headphone.jpg" alt=""></span> Hotline: 19006750
@@ -44,12 +45,10 @@
 							<li><a href=""> <img src="img/categories_icon_1.png"
 									alt=""> Tất cả sản phẩm<i class="fa-solid fa-caret-right"></i>
 									<ul class="sub-menu">
-										<li><a href="">Điện thoại</a></li>
-										<li><a href="">Tablet</a></li>
-										<li><a href=""> Laptop</a></li>
-										<li><a href="">Tivi</a></li>
-										<li><a href="">Máy ảnh</a></li>
-										<li><a href="">Phụ kiện</a></li>
+										<c:forEach var="category" items="${categories}">
+											<li><a href="">${category.name}</a></li>
+										</c:forEach>
+										
 									</ul>
 							</a></li>
 							<li><a href=""><img src="img/categories_icon_2.png"
@@ -70,8 +69,8 @@
 				<span><i class="fa-solid fa-align-right"></i></span>
 			</div>
 			<div class="search-header">
-				<input type="text" placeholder="Tìm kiếm sản phẩm..."> 
-				<input type="submit" name="" value="Tìm kiếm">
+				<input type="text" placeholder="Tìm kiếm sản phẩm..."> <input
+					type="submit" name="" value="Tìm kiếm">
 
 			</div>
 

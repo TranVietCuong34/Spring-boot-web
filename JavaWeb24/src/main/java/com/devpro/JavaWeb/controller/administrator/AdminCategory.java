@@ -22,7 +22,7 @@ public class AdminCategory extends BaseController{
 	@Autowired
 	private CategoriesService  categoriesService;
 	
-	@RequestMapping(value = {"/admin/categories"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/admin/manager/categories"}, method = RequestMethod.GET)
 	public String login(final Model model, final HttpServletRequest request, final HttpServletResponse response)
 		throws IOException{
 		

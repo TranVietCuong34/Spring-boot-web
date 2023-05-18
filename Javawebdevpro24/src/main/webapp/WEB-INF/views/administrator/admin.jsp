@@ -13,7 +13,7 @@
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
-     <link rel="stylesheet" href="${base}/css/admin.css">
+     <link rel="stylesheet" href="${base}/css/admin2.css">
 
 	<title>AdminHub</title>
 </head>

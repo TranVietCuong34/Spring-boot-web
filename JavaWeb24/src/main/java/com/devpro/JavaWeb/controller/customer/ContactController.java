@@ -66,6 +66,7 @@ public class ContactController extends BaseController {
 
 		return "customer/contact";
 	}
+	//cách 3: ajax
 //	@RequestMapping(value = { "/contact" }, method = RequestMethod.GET)
 //	public String ContactUs1(final Model model, final HttpServletRequest request, final HttpServletResponse respone)
 //			throws IOException {
