@@ -11,3 +11,4 @@ public class JavaWebStarter {
 		SpringApplication.run(JavaWebStarter.class, args);
 	}
 }
+		

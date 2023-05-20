@@ -6,4 +6,4 @@
 <link rel="stylesheet" href="${base}/css/admin2.css">
 
 <!-- summernote-->
-<link rel="stylesheet" href="${base}/css/summernote-bs4.min.css">
+<link rel="stylesheet" href="${base}/css/summernote-bs4.css">

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -52,4 +53,13 @@ public class AdminHomeController {
 		
 		return "administrator/admin";
 	}
+	//xóa sản phẩm 
+//	@RequestMapping(value = {"/admin/manager/delete-product/{productId}" }, method = RequestMethod.GET)
+//	public String delete(final Model model, final HttpServletRequest request, final HttpServletResponse response,
+//			@PathVariable("productId") int productID) throws IOException {
+//
+//	    
+//		productService.delete(productID);
+//		return "administrator/admin";
+//	}
 }

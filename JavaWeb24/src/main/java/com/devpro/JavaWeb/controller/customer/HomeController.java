@@ -16,7 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.devpro.JavaWeb.dto.Emplyee;
 import com.devpro.JavaWeb.model.Categories;
+import com.devpro.JavaWeb.model.Product;
+import com.devpro.JavaWeb.model.ProductImages;
 import com.devpro.JavaWeb.services.impl.CategoriesService;
+import com.devpro.JavaWeb.services.impl.ProductService;
+import com.devpro.JavaWeb.services.impl.Product_imageService;
 
 ;
 
@@ -24,14 +28,25 @@ import com.devpro.JavaWeb.services.impl.CategoriesService;
 public class HomeController {
 	@Autowired
 	private CategoriesService  categoriesService;
+	@Autowired
+	private ProductService productService;
+	@Autowired
+	private  Product_imageService  imageService;
+	
 	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
 	public String home(final Model model, final HttpServletRequest request, final HttpServletResponse respone)
 			throws IOException {
 		
 		// lấy danh sách categories từ database và trả về view thông qua model
 		List<Categories> categories = categoriesService.findAll();
+		List<Product> products = productService.findAll();
+		List<ProductImages> images = imageService.findAll();
+		
 		// đẩy xuống view để xử lý
 		model.addAttribute("categories", categories);
+		model.addAttribute("products", products);
+		model.addAttribute("images", images);
+		
 		// trả về đường dẫn của view
 		return "customer/home";
 	}

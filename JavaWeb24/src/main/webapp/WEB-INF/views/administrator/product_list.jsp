@@ -180,7 +180,7 @@
 						</table>
 						<!-- phân trang  -->
 						<div class="row">
-							<div style="display: flex; justify-content: center">
+							<div style="display: flex; justify-content: center;margin-top:20px">
 								<div id="paging"></div>
 							</div>
 						</div>

@@ -144,6 +144,7 @@ public class ProductService extends BaseService<Product> {
 
 		// có đẩy pictures ???
 		if (!isEmptyUploadFile(productPictures)) {
+			List<ProductImages> productImages = productImagesService.getEntitiesByNativeSQL("select * from tbl_products_images where product_id = " + productSaved.getId());
 			// xóa pictures cũ
 			if (productInDb.getProductImages() != null && productInDb.getProductImages().size() > 0) {
 				for (ProductImages opi : productInDb.getProductImages()) {
@@ -205,13 +206,7 @@ public class ProductService extends BaseService<Product> {
 		return getEntitiesByNativeSQL(sql,searchModel.getPage());
 	}
 
-
-	@Autowired
-	private ProductRepository productRepository;
-	@Transactional
-	public void deleteProduct(Integer id) {
-		productRepository.deleteById(id);
-	}
+	// xóa trong cơ sở dữ liệu
 	@Autowired
 	private ProductRepository repo;
 	@Transactional

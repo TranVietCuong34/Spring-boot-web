@@ -7,6 +7,6 @@
 <script src="${base}/js/admin.js"></script>
 
 <!-- summernote -->
-<script src="${base}/js/summernote-bs4.min.js"></script>
+<script src="${base}/js/summernote-bs4.js"></script>
 
 

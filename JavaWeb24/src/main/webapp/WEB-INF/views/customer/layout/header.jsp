@@ -78,7 +78,7 @@
 				<ul>
 					<li class="acc"><i class="fa-regular fa-user"></i> <a
 						href="${base}/login">Tài Khoản</a></li>
-					<li><a href="${base}/cart"><i
+					<li><a href="${base}/cart/checkout"><i
 							class="fa-sharp fa-solid fa-bag-shopping"></i></a></li>
 				</ul>
 			</div>
