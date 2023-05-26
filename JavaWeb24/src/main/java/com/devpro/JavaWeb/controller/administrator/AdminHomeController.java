@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.devpro.JavaWeb.dto.ProductSearch;
 import com.devpro.JavaWeb.model.Categories;
 import com.devpro.JavaWeb.model.Contact;
 import com.devpro.JavaWeb.model.Product;
@@ -20,7 +21,8 @@ import com.devpro.JavaWeb.model.SaleOrder;
 import com.devpro.JavaWeb.services.impl.CategoriesService;
 import com.devpro.JavaWeb.services.impl.ContactService;
 import com.devpro.JavaWeb.services.impl.ProductService;
-import com.devpro.JavaWeb.services.impl.SaleorderSrervice;
+import com.devpro.JavaWeb.services.impl.SaleOrderService;
+
 
 @Controller
 public class AdminHomeController {
@@ -29,7 +31,7 @@ public class AdminHomeController {
 	private ProductService productService;
 	
 	@Autowired
-	private SaleorderSrervice saleorderSrervice;
+	private SaleOrderService  saleorderSrervice;
 	
 	@Autowired
 	private ContactService contactService;
@@ -53,13 +55,5 @@ public class AdminHomeController {
 		
 		return "administrator/admin";
 	}
-	//xóa sản phẩm 
-//	@RequestMapping(value = {"/admin/manager/delete-product/{productId}" }, method = RequestMethod.GET)
-//	public String delete(final Model model, final HttpServletRequest request, final HttpServletResponse response,
-//			@PathVariable("productId") int productID) throws IOException {
-//
-//	    
-//		productService.delete(productID);
-//		return "administrator/admin";
-//	}
+	
 }

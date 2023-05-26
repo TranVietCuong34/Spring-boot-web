@@ -54,6 +54,7 @@
 					<li class="img-product col-4"><a href=""><img
 							src="img/img1-product.jpg" alt=""></a></li>
 					<c:forEach items="${products}" var="product" varStatus="loop">
+					<c:if test="${product.status == true}">
 						<li class="col-2">
 							<div class="item">
 								<div class="img">
@@ -89,6 +90,8 @@
 								</div>
 							</div>
 						</li>
+					</c:if>
+						
 
 					</c:forEach>
 				</ul>

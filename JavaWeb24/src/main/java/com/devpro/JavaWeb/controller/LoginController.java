@@ -1,4 +1,4 @@
-package com.devpro.JavaWeb.controller.customer;
+package com.devpro.JavaWeb.controller;
 
 import java.io.IOException;
 
@@ -20,6 +20,6 @@ public class LoginController {
 	public String login(final Model model, final HttpServletRequest request, final HttpServletResponse response)
 		throws IOException{
 		
-		return "customer/login";
+		return "login";
 	}
 }

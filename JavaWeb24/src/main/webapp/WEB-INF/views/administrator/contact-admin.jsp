@@ -93,7 +93,7 @@
 				<span class="num">8</span>
 			</a>
 			<a href="#" class="profile">
-				<img src="">
+				 <img src="${base}/img/avata-admin.jpg">
 			</a>
 		</nav>
 		<!-- NAVBAR -->

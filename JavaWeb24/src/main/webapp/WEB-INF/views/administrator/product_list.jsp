@@ -79,7 +79,7 @@
 				for="switch-mode" class="switch-mode"></label> <a href="#"
 				class="notification"> <i class='bx bxs-bell'></i> <span
 				class="num">8</span>
-			</a> <a href="#" class="profile"> <img src="">
+			</a> <a href="#" class="profile">  <img src="${base}/img/avata-admin.jpg">
 			</a>
 		</nav>
 		<!-- NAVBAR -->
@@ -143,7 +143,8 @@
 
 										<td>${product.title }</td>
 										<td>
-											<!-- định dạng tiền tệ  --> <fmt:setLocale value="vi_VN"
+											<!-- định dạng tiền tệ  --> 
+											<fmt:setLocale value="vi_VN"
 												scope="session" /> <fmt:formatNumber
 												value="${product.price}" type="currency" />
 
@@ -166,7 +167,8 @@
 												<a href="${base}/admin/manager/add-product/${product.id}">Sửa</a>
 											</button>
 											<button>
-												<a href="${base}/admin/manager/del-product/${product.id}">Xóa</a>
+												<%-- <a href="${base}/admin/manager/del-product/${product.id}">Xóa</a> --%>
+												<a href="" onclick="XoaSanPham(${product.id})">Xóa</a>
 											</button>
 
 											<button>
@@ -213,6 +215,32 @@
 					},
 			    });
 			});
+		function  XoaSanPham(idXoa) {
+			var data = {
+					id: idXoa,
+					tenSanPham: "",
+					soLuong: "",
+					size: "",
+					gia: "",
+					formDang: "",
+					thietKe: "",
+					
+			};
+			jQuery.ajax({
+				url: "/admin/xoa-san-pham",
+				type: "post",
+				contentType: "application/json",
+				data: JSON.stringify(data),
+				dataType: "json",
+				success: function(jsonResult) {
+					alert(jsonResult.message);
+					window.location = "/admin/product/list";
+				},
+				error: function(jqXhr, textStatus, errorMessage) {
+					alert("error");
+				}
+			});
+		}
 	
 	</script>
 

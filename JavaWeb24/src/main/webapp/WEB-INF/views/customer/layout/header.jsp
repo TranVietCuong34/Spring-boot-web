@@ -12,55 +12,53 @@
 						sách của Pelican Store
 				</a></li>
 				<li><a href="${base}/news"><i class="fa-regular fa-clock"></i>
-						Tin khuyến mãi tháng 11 </a> <img src="img/icon-hot-top.png" alt="">
+						Tin khuyến mãi tháng 11 </a> <img src="${base}/img/icon-hot-top.png" alt="">
 				</li>
 			</ul>
 		</div>
 		<div class="news-header">
 			<ul>
 				<li>
-					<%--  <a href="${base}/contact-us-spring-form"> <p>
-						<img src="img/icon-speaker.jpg" alt="">
-					</p>Gửi phản hồi về sản phẩm </a> --%> <a href="${base}/contact">
+				<a href="${base}/contact">
 						<p>
-							<img src="img/icon-speaker.jpg" alt="">
+							<img src="${base}/img/icon-speaker.jpg" alt="">
 						</p>Gửi phản hồi về sản phẩm
 				</a>
 				</li>
 				<li><a href=""> <span><img
-							src="img/icon-headphone.jpg" alt=""></span> Hotline: 19006750
+							src="${base}/img/icon-headphone.jpg" alt=""></span> Hotline: 19006750
 				</a></li>
 			</ul>
 		</div>
 	</div>
 	<div class="header-box2">
 		<div class="header-box2-item">
-			<a href="${base}/home"><img src="img/logo.png" alt=""></a>
+			<a href="${base}/home"><img src="${base}/img/logo.png" alt=""></a>
 
 			<div class="menu">
 				<h3>
 					Danh mục sản phẩm
 					<div class="list-menu">
 						<ul>
-							<li><a href=""> <img src="img/categories_icon_1.png"
+							<li><a href=""> <img src="${base}/img/categories_icon_1.png"
 									alt=""> Tất cả sản phẩm<i class="fa-solid fa-caret-right"></i>
 									<ul class="sub-menu">
 										<c:forEach var="category" items="${categories}">
 											<li><a href="">${category.name}</a></li>
 										</c:forEach>
-										
+
 									</ul>
 							</a></li>
-							<li><a href=""><img src="img/categories_icon_2.png"
+							<li><a href=""><img src="${base}/img/categories_icon_2.png"
 									alt="">Sản phẩm mới</a></li>
-							<li><a href=""> <img src="img/categories_icon_3.png"
+							<li><a href=""> <img src="${base}/img/categories_icon_3.png"
 									alt="">Sản phẩm nổi bật
 							</a></li>
-							<li><a href=""><img src="img/categories_icon_4.png"
+							<li><a href=""><img src="${base}/img/categories_icon_4.png"
 									alt="">Sản phẩm khuyến mãi</a></li>
-							<li><a href=""><img src="img/categories_icon_5.png"
+							<li><a href=""><img src="${base}/img/categories_icon_5.png"
 									alt="">Máy likenew</a></li>
-							<li><a href=""><img src="img/categories_icon_6.png"
+							<li><a href=""><img src="${base}/img/categories_icon_6.png"
 									alt="">Máy cũ giá rẻ</a></li>
 						</ul>
 					</div>
@@ -78,8 +76,14 @@
 				<ul>
 					<li class="acc"><i class="fa-regular fa-user"></i> <a
 						href="${base}/login">Tài Khoản</a></li>
-					<li><a href="${base}/cart/checkout"><i
-							class="fa-sharp fa-solid fa-bag-shopping"></i></a></li>
+					<li><a href="${base}/cart/checkout"> <i
+							class="fa-sharp fa-solid fa-bag-shopping"> 
+							<span
+								id="soluongsanphamtronggiohang"
+								style="font-size: 12px; position: absolute; margin-top: -10px; margin-left: -4px; border: 1px solid red; padding: 3px; border-radius: 50%; background: red;">
+									${TongSoLuongSanPhamTrongGioHang} </span>
+						</i>
+					</a></li>
 				</ul>
 			</div>
 

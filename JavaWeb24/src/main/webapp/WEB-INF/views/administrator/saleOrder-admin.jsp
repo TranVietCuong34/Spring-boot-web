@@ -1,7 +1,9 @@
 <!-- để gõ được tiếng việt -->
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -93,7 +95,7 @@
 				<span class="num">8</span>
 			</a>
 			<a href="#" class="profile">
-				<img src="">
+				 <img src="${base}/img/avata-admin.jpg">
 			</a>
 		</nav>
 		<!-- NAVBAR -->
@@ -110,6 +112,7 @@
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
+					<form action="${base}/admin/SaleOrder/list" method="get">		
 					<table>
 						<thead>
 							<tr>
@@ -121,9 +124,9 @@
 								<th>Thao Tác</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody> 
 																								
-								<c:forEach var="saleOrder" items="${saleOrders}" varStatus="loop">
+								<c:forEach items="${saleOrders.data}" var="saleOrder"  varStatus="loop">
 									<tr>
 										<th scope="row" width="5%">${loop.index + 1}</th>									
 										<td>${saleOrder.customerName}</td>
@@ -134,10 +137,10 @@
 										
 										<td>
 											<button>
-												<a href="">Sửa</a>
+												<a href="${base}/admin/manager/add-product/${saleOrder.id}">Sửa</a>
 											</button>
-											<button><a href="">Xóa</a>  </button>
-											<button><a href="">Chi Tiết</a></button>
+											<button><a href=""}">Xóa</a>  </button>
+											<button>Chi tiết</button>
 										</td>
 									</tr>																																											
 								</c:forEach>							
@@ -145,6 +148,14 @@
 							
 						</tbody>
 					</table>
+					</form>
+					
+					<!-- phân trang  -->
+						<div class="row">
+							<div style="display: flex; justify-content: center;margin-top:20px">
+								<div id="paging"></div>
+							</div>
+						</div>
 				</div>
 			</div>
 			
@@ -157,7 +168,23 @@
 
 	<jsp:include page="/WEB-INF/views/administrator/layout/js.jsp"></jsp:include>
 	<script>
-		
+	/* phân trang  */	
+		$( document ).ready(function() {
+				// đặt giá trị của category ứng với điều kiện search trước đó
+				$("#categoryId").val(${searchModel.categoreisId});
+				
+				$("#paging").pagination({
+					currentPage: ${products.currentPage}, 	//trang hiện tại
+			        items: ${products.totalItems},			//tổng số sản phẩm
+			        itemsOnPage: ${products.sizeOfPage}, 	//số sản phẩm trên 1 trang
+			        cssStyle: 'light-theme',
+			        onPageClick: function(pageNumber, event) {
+			        	$('#page').val(pageNumber);
+			        	$('#btnSearch').trigger('click');
+					},
+			    });
+			});
+	
 	</script>
 </body>
 

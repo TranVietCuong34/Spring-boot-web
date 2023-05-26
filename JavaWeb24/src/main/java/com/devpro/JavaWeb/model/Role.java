@@ -10,9 +10,11 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+
 @Entity
 @Table(name = "tbl_roles")
-public class Role extends BaseEntity {
+public class Role extends BaseEntity  implements GrantedAuthority{
 
 	@Column(name = "name", length = 45, nullable = false)
 	private String name;
@@ -48,5 +50,12 @@ public class Role extends BaseEntity {
 	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
+
+	@Override
+	public String getAuthority() {
+		return this.name;
+	}
+
+	
 	
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import java.math.BigDecimal;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -26,6 +26,7 @@ import com.devpro.JavaWeb.model.SaleOrder;
 import com.devpro.JavaWeb.model.SaleOrderProducts;
 import com.devpro.JavaWeb.services.impl.ProductService;
 import com.devpro.JavaWeb.services.impl.SaleOrderService;
+
 
 @Controller
 public class CartController extends BaseController {
@@ -130,7 +131,7 @@ public class CartController extends BaseController {
 			Product productInDb = productService.getById(cartItem.getProductId());
 
 			cartItem.setProductName(productInDb.getTitle());
-			cartItem.setPriceUnit(productInDb.getPrice());
+			cartItem.setPriceUnit(productInDb.getPriceSale());
 			cartItem.setAvatar(productInDb.getAvatar());
 
 			cart.getCartItems().add(cartItem); // thêm mới sản phẩm vào giỏ hàng
@@ -146,11 +147,56 @@ public class CartController extends BaseController {
 		
 		// lưu totalItems vào session
 		// tất cả các giá trị lưu trên session đều có thể truy cập được từ View
-//		session.setAttribute("TongSoLuongSanPhamTrongGioHang", getTotalItems(request));
+		session.setAttribute("TongSoLuongSanPhamTrongGioHang", getTotalItems(request)); 
 		
 		return ResponseEntity.ok(jsonResult);
 	}
 	
+	@RequestMapping(value = {"/ajax/tangGiamSanPham"}, method = RequestMethod.POST)
+	public ResponseEntity<Map<String, Object>> TangGiamSPGioHang(final Model model,
+			final HttpServletRequest request,
+			final HttpServletResponse response,
+			@RequestBody CartItem cartItem)
+	throws IOException {
+		
+		HttpSession session = request.getSession();
+		
+		Cart cart = (Cart) session.getAttribute("cart");
+		
+		for(CartItem cartIt : cart.getCartItems()) {
+			if(cartIt.getProductId() == cartItem.getProductId()) {
+				cartIt.setQuanlity(cartItem.getQuanlity());
+			}
+		}
+		cart.setTotalPrice(this.getTotalPrice(request));
+		cart.setTotalProducts(this.getTotalItems(request));
+		
+		Map<String, Object> jsonResult = new HashMap<String, Object>();
+		return ResponseEntity.ok(jsonResult);
+		
+	}
+	
+	private BigDecimal getTotalPrice(final HttpServletRequest request) {
+		HttpSession httpSession = request.getSession();
+
+		if (httpSession.getAttribute("cart") == null) {
+			return new BigDecimal("0");
+		}
+
+		Cart cart = (Cart) httpSession.getAttribute("cart");
+		List<CartItem> cartItems = cart.getCartItems();
+
+		BigDecimal total = new BigDecimal("0");
+		for (CartItem item : cartItems) {
+			
+			BigDecimal a = new BigDecimal(item.getPriceUnit() + "").multiply(BigDecimal.valueOf(item.getQuanlity()));
+			
+			total = total.add(a);
+		}
+
+		return total;
+	}
+	//tính số lượng sản phẩm
 	private int getTotalItems(final HttpServletRequest request) {
 		HttpSession httpSession = request.getSession();
 

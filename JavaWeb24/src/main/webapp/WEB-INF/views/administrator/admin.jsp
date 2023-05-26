@@ -1,6 +1,8 @@
 <!-- để gõ được tiếng việt -->
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
@@ -93,7 +95,7 @@
 				<span class="num">8</span>
 			</a>
 			<a href="#" class="profile">
-				<img src="">
+				 <img src="${base}/img/avata-admin.jpg">
 			</a>
 		</nav>
 		<!-- NAVBAR -->
@@ -133,13 +135,10 @@
 						<i class='bx bx-search'></i>
 						<i class='bx bx-filter'></i>
 					</div>
-					<button class="add-product">
-					<a href="${base }/admin/manager/add-product">Thêm Sản Phẩm</a>
-					
-					</button>
-					<table>
-						<thead>
-							<tr>
+					<form action="${base}/admin/home/list" method="get">						
+						<table>
+							<thead>
+								<tr>
 									<th scope="col">STT</th>
 									<th scope="col">Tên</th>
 									<th scope="col">Giá</th>
@@ -147,29 +146,23 @@
 									<th scope="col">Trạng Thái</th>
 									<th scope="col">Ảnh</th>
 									<th scope="col">Thao tác</th>
-							</tr>
-						</thead>
-						<tbody>
-																								
-							<c:forEach items="${products}" var="product" varStatus="loop">
+								</tr>
+							</thead>
+							<tbody>
+
+								<c:forEach items="${products}" var="product" varStatus="loop">
 									<tr>
-										<th scope="row" width="5%">
-											${loop.index + 1}
-										</th>
+										<th scope="row" width="5%">${loop.index + 1}</th>
+
+										<td>${product.title }</td>
 										<td>
-											${product.title }
+											<!-- định dạng tiền tệ  --> <fmt:setLocale value="vi_VN"
+												scope="session" /> <fmt:formatNumber
+												value="${product.price}" type="currency" />
+
 										</td>
-										<td>
-											 <!-- định dạng tiền tệ  -->
-											<fmt:setLocale value="vi_VN" scope="session" />
-											<fmt:formatNumber value="${product.price}" type="currency" /> 
-										
-										</td>
-										<td>
-											${product.categories.name }
-										</td>
-										<td>
-											<span id="_product_status_${product.id} }">
+										<td>${product.categories.name }</td>
+										<td><span id="_product_status_${product.id} }">
 												<c:choose>
 													<c:when test="${product.status }">
 														<input type="checkbox" checked="checked" readonly="readonly">
@@ -178,23 +171,34 @@
 														<input type="checkbox" readonly="readonly">
 													</c:otherwise>
 												</c:choose>
-											</span>
-										</td>
-										<td>
-											<img src="${base }/upload/${product.avatar}" width="100" height="100">
-										</td>
+											</span></td>
+										<td><img src="${base }/upload/${product.avatar}"
+											width="100" height="100"></td>
 										<td>
 											<button>
 												<a href="${base}/admin/manager/add-product/${product.id}">Sửa</a>
 											</button>
-											<button><a href="${base}/admin/manager/delete-product/${product.id}">Xóa</a>  </button>
-											<button><a href="">Chi Tiết</a></button>
-										</td>	
+											<button>
+												<a href="${base}/admin/manager/del-product/${product.id}">Xóa</a>
+											</button>
+
+											<button>
+												<a href="">Chi Tiết</a>
+											</button>
+										</td>
 									</tr>
-								</c:forEach>						
-							
-						</tbody>
-					</table>
+								</c:forEach>
+
+							</tbody>
+						</table>
+						<!-- phân trang  -->
+						<div class="row">
+							<div style="display: flex; justify-content: center;margin-top:20px">
+								<div id="paging"></div>
+							</div>
+						</div>
+					</form>
+					
 				</div>
 			</div>
 			
@@ -207,7 +211,8 @@
 						<i class='bx bx-search'></i>
 						<i class='bx bx-filter'></i>
 					</div>
-					<table>
+					<form action="${base}/admin/home/list" method="get">		
+						<table>
 						<thead>
 							<tr>
 								<th>STT</th>
@@ -218,7 +223,7 @@
 						</thead>
 						<tbody>
 																								
-								<c:forEach var="category" items="${categories}" varStatus="loop">
+								<c:forEach  items="${categories}"  var="category" varStatus="loop">
 								<tr>	
 										<th scope="row" width="5%">${loop.index + 1}</th>	
 										<td>${category.name}</td>
@@ -236,7 +241,7 @@
 											<button>
 												<a href="${base}/admin/manager/add-product/${category.id}">Sửa</a>
 											</button>
-											<button><a href="${base}/admin/manager/delete-product/${product.id}">Xóa</a>  </button>
+											<button><a href="">Xóa</a>  </button>
 											<button><a href="">Chi Tiết</a></button>
 										</td>	
 										</tr>									
@@ -246,6 +251,14 @@
 							
 						</tbody>
 					</table>
+					</form>
+					
+					<!-- phân trang  -->
+						<div class="row">
+							<div style="display: flex; justify-content: center;margin-top:20px">
+								<div id="paging"></div>
+							</div>
+						</div>
 				</div>
 			</div>
 		<div class="table-data">
@@ -255,6 +268,7 @@
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
+					<form action="${base}/admin/home/list" method="get">		
 					<table>
 						<thead>
 							<tr>
@@ -266,9 +280,9 @@
 								<th>Thao Tác</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody> 
 																								
-								<c:forEach var="saleOrder" items="${saleOrders}" varStatus="loop">
+								<c:forEach items="${saleOrders}" var="saleOrder"  varStatus="loop">
 									<tr>
 										<th scope="row" width="5%">${loop.index + 1}</th>									
 										<td>${saleOrder.customerName}</td>
@@ -281,7 +295,7 @@
 											<button>
 												<a href="${base}/admin/manager/add-product/${saleOrder.id}">Sửa</a>
 											</button>
-											<button><a href="${base}/admin/manager/delete-product/${product.id}">Xóa</a>  </button>
+											<button><a href=""}">Xóa</a>  </button>
 											<button>Chi tiết</button>
 										</td>
 									</tr>																																											
@@ -290,6 +304,9 @@
 							
 						</tbody>
 					</table>
+					</form>
+					
+				
 				</div>
 			</div>
 		</main>
@@ -299,7 +316,8 @@
 
 	<jsp:include page="/WEB-INF/views/administrator/layout/js.jsp"></jsp:include>
 	<script>
-
+	
+	
 	</script>
 </body>
 

@@ -277,6 +277,10 @@ header{
     flex: 0 0 50%;
     max-width: 50%;
 }
+.col-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+}
 .col-2 {
     flex: 0 0 16.66667%;
     max-width: 16.66667%;
@@ -322,16 +326,14 @@ header{
     margin-top: 10px;
 
 }
-.list-item li input[type="number"]{
+.list-item li input[type="text"]{
     background-color: #fff;
     border: 1px solid #ebebeb;
     color: #1c1c1c;
     font-size: 14px;
     line-height: 15px;
     text-align: center;
-    border-radius: 10px;
-    padding: 10px;
-    width: 30%;
+    width: 20%;
 }
 .list-title .btn{
     display: flex;
@@ -529,4 +531,14 @@ button:hover {
 .box-4-footer p a:hover {
     color: #1db4f6;
 
+}
+ul.list-unstyled li{
+    display: flex;
+    border-bottom: 1px solid #dad5d5  ;
+    margin: 10px 0;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+ul.list-unstyled li:last-child{
+    border-bottom: 0 ;
 }

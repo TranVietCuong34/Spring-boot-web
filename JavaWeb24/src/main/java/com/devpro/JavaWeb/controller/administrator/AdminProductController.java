@@ -1,7 +1,10 @@
  package com.devpro.JavaWeb.controller.administrator;
 
+import java.awt.PageAttributes.MediaType;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.print.DocFlavor.STRING;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -100,5 +104,17 @@ public class AdminProductController extends BaseController {
 		model.addAttribute("products", productService.searchProduct(searchModel));
 		model.addAttribute("searchModel", searchModel);
 		return "administrator/product_list";
+	}
+	
+	@RequestMapping(value = {"/admin/xoa-san-pham"}, method = RequestMethod.POST)
+	public ResponseEntity<Map<String, Object>> xoaSanPham(final Model model,
+			final HttpServletRequest request,
+			final HttpServletResponse response,
+			final @RequestBody Product product){
+		
+		productService.deleteSanPham(product);
+		Map<String, Object> jsonResult = new HashMap<String, Object>();
+		jsonResult.put("message", "Xóa thành công!");
+		return ResponseEntity.ok(jsonResult);
 	}
 }

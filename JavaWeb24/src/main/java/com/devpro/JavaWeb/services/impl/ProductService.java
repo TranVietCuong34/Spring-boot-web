@@ -146,8 +146,8 @@ public class ProductService extends BaseService<Product> {
 		if (!isEmptyUploadFile(productPictures)) {
 			List<ProductImages> productImages = productImagesService.getEntitiesByNativeSQL("select * from tbl_products_images where product_id = " + productSaved.getId());
 			// xóa pictures cũ
-			if (productInDb.getProductImages() != null && productInDb.getProductImages().size() > 0) {
-				for (ProductImages opi : productInDb.getProductImages()) {
+			if (productImages != null && productImages.size() >0) {
+				for (ProductImages opi : productImages) {
 					// xóa anh san pham trong folder upload
 					new File("F:/upload/" + opi.getPath()).delete();
 
@@ -212,6 +212,18 @@ public class ProductService extends BaseService<Product> {
 	@Transactional
 	public void delete(int id) {
 		repo.deleteById(id);;
+	}
+	
+	
+	
+	@Transactional 
+	public Product deleteSanPham(Product product) {
+		Product productDel = super.getById(product.getId());
+		if(productDel.getStatus() == false) {
+			return productDel;
+		}
+		productDel.setStatus(false);
+		return super.saveOrUpdate(productDel);
 	}
 
 }

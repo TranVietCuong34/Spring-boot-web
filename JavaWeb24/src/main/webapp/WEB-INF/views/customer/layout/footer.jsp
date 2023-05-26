@@ -4,7 +4,7 @@
 	<div class="box-1-footer">
 		<div class="box-1-footer-info">
 			<div class="box-1-footer-img">
-				<img src="img/logo.png" alt="">
+				<img src="${base}/img/logo.png" alt="">
 			</div>
 			<div class="box-1-footer-left">
 				<p>Báo cáo Thương mại điện tử cho phép bạn phân tích hoạt động
@@ -48,7 +48,7 @@
 			</a> <a href=""><i class="fa-brands fa-pinterest pinterest"></i></a> <a
 				href=""><i class="fa-brands fa-google-plus google-plus"></i></a> <a
 				href=""><i class="fa-brands fa-youtube  youtube"></i></a></li>
-			<img src="img/box2-footer-banner.png" alt="">
+			<img src="${base}/img/box2-footer-banner.png" alt="">
 		</ul>
 	</div>
 	<div class="box-3-footer">
