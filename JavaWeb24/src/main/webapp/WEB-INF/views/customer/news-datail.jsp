@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
      <jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
-     <link rel="stylesheet" href="${base}/css/news-daitail.css">
+     <jsp:include page="/WEB-INF/views/customer/layout/css.jsp"></jsp:include>
     <title>News-daitail</title>
 </head>
 

@@ -29,7 +29,7 @@ import com.devpro.JavaWeb.controller.BaseController;
 import com.devpro.JavaWeb.model.Contact;
 import com.devpro.JavaWeb.services.impl.ContactService;
 import com.devpro.JavaWeb.*;
-
+import com.devpro.JavaWeb.dto.*;
 @Controller
 public class ContactController extends BaseController {
 	@Autowired // => spring  vào springController lấy 1 bean kiểu contactService
@@ -39,7 +39,7 @@ public class ContactController extends BaseController {
 	public String ContactUs(final Model model, final HttpServletRequest request, final HttpServletResponse respone)
 			throws IOException {
 
-		com.devpro.JavaWeb.dto.ContactUs contactUs = new com.devpro.JavaWeb.dto.ContactUs();
+		ContactUs contactUs = new ContactUs();
 		model.addAttribute("contactUs", contactUs);
 
 		return "customer/contact";

@@ -7,7 +7,7 @@ import com.devpro.JavaWeb.model.SaleOrder;
 import com.devpro.JavaWeb.services.BaseService;
 
 @Service
-public class saleorderSrervice extends BaseService<SaleOrder> {
+public class SaleOrderService extends BaseService<SaleOrder> {
 
 	@Override
 	protected Class<SaleOrder> clazz() {

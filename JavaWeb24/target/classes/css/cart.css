@@ -351,6 +351,8 @@ header{
     padding: 5px 30px;
     text-align: center;
     color: #fff;
+    right: 13%;
+    position: absolute;
     
 }
 .list-title .btn button:hover{

@@ -24,65 +24,11 @@
 
 <body>
 
-
-
-	<!-- SIDEBAR -->
-	<section id="sidebar">
-		<a href="${base}/admin/home" class="brand"> <i
-			class='bx bxs-smile'></i> <span class="text">Admin</span>
-		</a>
-		<ul class="side-menu top">
-			<li class="active"><a href="${base}/admin/manager/home"> <i
-					class='bx bxs-dashboard'></i> <span class="text">Quản lý</span>
-			</a></li>
-			<li><a href="${base}/admin/product/list"> <i
-					class='bx bxs-shopping-bag-alt'></i> <span class="text">Quản
-						Lý hàng</span>
-			</a></li>
-			<li><a href="${base}/admin/manager/categories"> <i
-					class='bx bxs-doughnut-chart'></i> <span class="text">Quản
-						Lý Danh Mục</span>
-			</a></li>
-			<li><a href="${base}/admin/manager/saleOrder"> <i
-					class='bx bxs-message-dots'></i> <span class="text">Quản Lý
-						Khách Hàng </span>
-			</a></li>
-
-		</ul>
-		<ul class="side-menu">
-			<li><a href="#"> <i class='bx bxs-cog'></i> <span
-					class="text">Settings</span>
-			</a></li>
-			<li><a href="#" class="logout"> <i
-					class='bx bxs-log-out-circle'></i> <span class="text">Logout</span>
-			</a></li>
-		</ul>
-	</section>
-	<!-- SIDEBAR -->
-
-
-
+	<jsp:include page="/WEB-INF/views/administrator/layout/menu.jsp"></jsp:include>
+	
 	<!-- CONTENT -->
 	<section id="content">
-		<!-- NAVBAR -->
-		<nav>
-			<i class='bx bx-menu'></i> <a href="#" class="nav-link">Categories</a>
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn">
-						<i class='bx bx-search'></i>
-					</button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden> <label
-				for="switch-mode" class="switch-mode"></label> <a href="#"
-				class="notification"> <i class='bx bxs-bell'></i> <span
-				class="num">8</span>
-			</a> <a href="#" class="profile">  <img src="${base}/img/avata-admin.jpg">
-			</a>
-		</nav>
-		<!-- NAVBAR -->
+		<jsp:include page="/WEB-INF/views/administrator/layout/nav.jsp"></jsp:include>
 
 		<!-- MAIN -->
 		<main>
@@ -137,29 +83,29 @@
 							</thead>
 							<tbody>
 
-								<c:forEach items="${products.data}" var="product" varStatus="loop">
+								<c:forEach items="${products.data}" var="product"
+									varStatus="loop">
 									<tr>
 										<th scope="row" width="5%">${loop.index + 1}</th>
 
 										<td>${product.title }</td>
 										<td>
-											<!-- định dạng tiền tệ  --> 
-											<fmt:setLocale value="vi_VN"
+											<!-- định dạng tiền tệ  --> <fmt:setLocale value="vi_VN"
 												scope="session" /> <fmt:formatNumber
 												value="${product.price}" type="currency" />
 
 										</td>
 										<td>${product.categories.name }</td>
-										<td><span id="_product_status_${product.id} }">
-												<c:choose>
+										<td><span id="_product_status_${product.id} }"> <c:choose>
 													<c:when test="${product.status }">
-														<input type="checkbox" checked="checked" readonly="readonly">
+														<input type="checkbox" checked="checked"
+															readonly="readonly">
 													</c:when>
 													<c:otherwise>
 														<input type="checkbox" readonly="readonly">
 													</c:otherwise>
 												</c:choose>
-											</span></td>
+										</span></td>
 										<td><img src="${base }/upload/${product.avatar}"
 											width="100" height="100"></td>
 										<td>
@@ -182,7 +128,8 @@
 						</table>
 						<!-- phân trang  -->
 						<div class="row">
-							<div style="display: flex; justify-content: center;margin-top:20px">
+							<div
+								style="display: flex; justify-content: center; margin-top: 20px">
 								<div id="paging"></div>
 							</div>
 						</div>

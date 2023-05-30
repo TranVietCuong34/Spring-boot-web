@@ -73,3 +73,26 @@ function TangGiamSanPham(_baseUrl, _productId, _quanlity) {
 	});
 
 }
+function XoaSanPham(_baseUrl, _productId) {
+	var requestBody = {
+		productId: _productId
+	};
+	
+	// $ === jQuery
+	// json == javascript object
+	jQuery.ajax({
+		url: _baseUrl + "/ajax/delItem", //-> request mapping định nghĩa bên controller
+		type: "post",					   //-> method type của Request Mapping	
+		contentType: "application/json",   //-> nội dung gửi lên dạng json <=> javascript object
+		data: JSON.stringify(requestBody), //-> chuyển 1 javascript object thành string json
+	
+		dataType: "json", 				   // kiểu dữ liệu trả về từ Controller
+		success: function(jsonResult) {
+			alert(jsonResult.message);    // gọi ajax thành công
+			window.location = '/cart/checkout';
+		},
+		error: function(jqXhr, textStatus, errorMessage) { // gọi ajax thất bại
+			alert("error");
+		}
+	});
+}

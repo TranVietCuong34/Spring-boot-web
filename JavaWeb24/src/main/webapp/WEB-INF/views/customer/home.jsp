@@ -37,13 +37,13 @@
 	</nav>
 	<div class="content">
 		<div class="menu-content-top">
-			<a href="">Điện thoại</a>
+			<a href="">Tất Cả Sản phẩm</a>
 			<ul>
-				<li><a href="">Trang chủ</a></li>
+				<li><a href="${base}/home">Trang chủ</a></li>
 				<li><a href="${base}/shop">Sản phẩm</a></li>
 				<li><a href="${base}/news">Blog</a></li>
-				<li><a href="">Giới thiệu</a></li>
-				<li><a href="${base}/contact"">Liên Hệ</a></li>
+
+				<li><a href="${base}/contact">Liên Hệ</a></li>
 			</ul>
 		</div>
 		<div class="product">

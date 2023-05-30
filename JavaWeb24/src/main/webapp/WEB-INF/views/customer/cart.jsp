@@ -67,41 +67,30 @@
 
 					</li>
 					<li class="col-2 ">
-						<button>
-							<a href="">Xóa</a>
+						<button style="padding: 3px 10px;">
+							<a href="" onclick="XoaSanPham('${base}',${ci.productId })">Xóa</a>
 						</button>
 					</li>
 				</ul>
 			</c:forEach>
 
 			<!-- form cho việc thanh toán -->
-			<form action="" method="post">
+			<form action="${base}/cart/checkout" method="post">
 
 				<div class="row "
 					style="display: flex; flex-wrap: wrap; margin-left: -4px; margin-right: -4px;">
 					<div class="col-lg-6 " style="flex: 0 0 50%; max-width: 50%;">
-						<!-- <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Coupon code</div>
-						<div class="p-4">
-							<p class="font-italic mb-4">If you have a coupon code, please enter it in the box below</p>
-							<div class="input-group mb-4 border rounded-pill p-2">
-								<input type="text" placeholder="Apply coupon" aria-describedby="button-addon3" class="form-control border-0">
-								<div class="input-group-append border-0">
-									<button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill">
-										<i class="fa fa-gift mr-2"></i>Apply coupon
-									</button>
-								</div>
-							</div>
-						</div> -->
 						<div class="" style="margin: 50px 0; font-size: 25px;">Thông
 							tin khách hàng</div>
 						<div class="p-4">
 
 							<c:choose>
-								<c:when test="${isLogined }">
+								<c:when test="${isLogined}">
 									<div class="form-group"
 										style="margin-bottom: 15px; display: flex; flex-direction: column;">
 										<label for="customerPhone" style="margin: 10px 0;">Họ
-											và tên khách hàng</label> <input type="text" class="form-control"
+											và tên khách hàng</label> 
+											<input type="text" class="form-control"
 											id="customerFullName" name="customerFullName"
 											value="${userLogined.username }" placeholder="Full name"
 											style="width: 70%; padding: 5px;">
@@ -164,7 +153,8 @@
 
 						</div>
 					</div>
-					<div class="col-lg-6">
+					<div class="col-lg-6"
+						style="flex: 0 0 50%; max-width: 40%; margin-left: 70px">
 						<div
 							class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold"
 							style="margin: 50px 0; font-size: 25px;">Thông tin thanh
@@ -179,22 +169,19 @@
 								</li>
 								<li class="d-flex justify-content-between py-3 border-bottom"><strong
 									class="text-muted">Phí sip</strong><strong><fmt:setLocale
-											value="vi_VN" scope="session" /> <fmt:formatNumber
-											value="0" type="currency" /></strong></li>
-							
+											value="vi_VN" scope="session" /> <fmt:formatNumber value="0"
+											type="currency" /></strong></li>
+
 								<li class="d-flex justify-content-between py-3 border-bottom"><strong
-									class="text-muted">Tổng Tiền</strong>
-									<strong class="text-muted">
-									<fmt:setLocale
-											value="vi_VN" scope="session" /> <fmt:formatNumber
+									class="text-muted">Tổng Tiền</strong> <strong
+									class="text-muted"> <fmt:setLocale value="vi_VN"
+											scope="session" /> <fmt:formatNumber
 											value="${cart.totalPrice}" type="currency" />
-									
-									</strong></li>
+
+								</strong></li>
 							</ul>
 							<div class="btn">
-								<button type="submit"
-									class="btn btn-dark rounded-pill py-2 btn-block">Tiến
-									Hành Thanh Toán</button>
+								<button type="submit">Tiến Hành Thanh Toán</button>
 
 							</div>
 						</div>

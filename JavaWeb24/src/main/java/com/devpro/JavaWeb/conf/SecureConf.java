@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import com.devpro.JavaWeb.services.impl.UserDetailsServiceImpl;
 
@@ -23,40 +24,43 @@ public class SecureConf extends WebSecurityConfigurerAdapter {
 		.antMatchers("/css/**", "/js/**", "/upload/**", "/img/**", "/login", "/logout").permitAll()
 		
 		//các request kiểu: "/admin/" phải xác thực rồi(đã login) mới được vào (authenticated)
-		.antMatchers("/admin/**").authenticated()
+		.antMatchers("/admin/**").hasAnyAuthority("ADMIN")
 		
 		.and()
+		
 		
 		//nếu chưa xác thực thì hiển thị trang login
 		// /login: một request trong LoginController
 		.formLogin().loginPage("/login").loginProcessingUrl("/login_processing_url")
-//		.successHandler(authenticationSuccessHandler())
-		.defaultSuccessUrl("/home", true) // login thành công thì luôn trở về trang người dùng
+		.successHandler(new UrlAuthenticationSuccessHandler()) // nếu login admin thì về admin, khách hàng thì về khách hàng
+//		.defaultSuccessUrl("/home", true) // login thành công thì luôn trở về trang người dùng
 		.failureUrl("/login?login_error=true")
 		
 		.and()
 		
 		//cấu hình cho phần logout
 		.logout().logoutUrl("/logout").logoutSuccessUrl("/home").invalidateHttpSession(true)
-		.deleteCookies("JSESSIONID");
-//		.and().rememberMe().key("uniqueAndSecret").tokenValiditySeconds(86400);
+		.deleteCookies("JSESSIONID")
+		.and().rememberMe().key("uniqueAndSecret").tokenValiditySeconds(86400);
+		// uniqueAndSecret mặc định có sẵn trong spring-security;
+		// bên thẻ input Remember me phải đặt name="remember-me"
 	}
 	
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;	
 	
 	// xác thực để đăng nhập
+	// đây là autowired cho một hàm. Tham số ở hàm đó được spring inject vào 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder(4));
-		
+		//BCryptPasswordEncoder spring cũng cấp để mã hóa password
+		auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder(6));
 	}
-	
 	public static void main(String[] args) {
-		System.out.println(new BCryptPasswordEncoder(4).encode("admin"));
-		System.out.println(new BCryptPasswordEncoder(4).encode("guest"));
+		System.out.println(new BCryptPasswordEncoder(6).encode("123456"));
 	}
 	
+
 
 	
 }

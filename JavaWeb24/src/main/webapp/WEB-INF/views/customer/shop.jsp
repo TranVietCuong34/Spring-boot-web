@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
    	<jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
-    <link rel="stylesheet" href="${base}/css/shop.css">
+   <jsp:include page="/WEB-INF/views/customer/layout/css.jsp"></jsp:include>
     <title>Shop</title>
 </head>
 

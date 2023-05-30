@@ -1,6 +1,7 @@
 <!-- để gõ được tiếng việt -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,11 +30,16 @@
 				<!-- bắt buộc name phải đẻ là "password" -->
 				<input type="password" name="password" class="form-control"
 					placeholder="Password">
+				<div class="form-group" style="display:flex;">
+					<input type="checkbox" name="remember-me"  style="width: 10%;"/> 
+					<p style="font-size: 11px;">Remember me</p>
+					
+				</div>
 				<!-- kiểm tra xem đã login thành công hay không, bằng cách kiểm tra request param login_error -->
 				<c:if test="${not empty param.login_error}">
 					<div class="alert alert-danger" role="alert"
-						style="font-size: 13px; color: red; font-style: italic; margin:10px">Đăng nhập không thành
-						công! Thử lại.</div>
+						style="font-size: 13px; color: red; font-style: italic; margin: 10px">Đăng
+						nhập không thành công! Thử lại.</div>
 				</c:if>
 				<button type="submit">Log In</button>
 				<div class="message">

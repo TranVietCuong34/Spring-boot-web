@@ -65,6 +65,10 @@ public class CartController extends BaseController {
 		saleOrder.setCustomerPhone(customerPhone);	
 		saleOrder.setCode(String.valueOf(System.currentTimeMillis())); // mã hóa đơn: HD20230314
 		
+		// kiểm tra user đã đăng nhập chưa
+		if(isLogined()) {
+			saleOrder.setUser(getUserLogined());
+		}
 		// lấy giỏ hàng
 		HttpSession session = request.getSession();
 		Cart cart = (Cart) session.getAttribute("cart");    
@@ -175,6 +179,32 @@ public class CartController extends BaseController {
 		return ResponseEntity.ok(jsonResult);
 		
 	}
+	@RequestMapping(value = {"/ajax/delItem"}, method = RequestMethod.POST)
+	public ResponseEntity<Map<String, Object>> xoaSanPhamGH(final Model model,
+			final HttpServletRequest request,
+			final HttpServletResponse response,
+			@RequestBody CartItem cartItem){
+		HttpSession session = request.getSession();
+		Cart cart = (Cart) session.getAttribute("cart");
+		
+		for(CartItem cItem : cart.getCartItems()) {
+			if(cartItem.getProductId() == cItem.getProductId()) {
+				cart.getCartItems().remove(cItem);
+				break;
+			}
+		}
+		cart.setTotalPrice(this.getTotalPrice(request));
+		cart.setTotalProducts(this.getTotalItems(request));
+		
+		Map<String, Object> jsonResult = new HashMap<String, Object>();
+		jsonResult.put("message", "Xóa thành công!");
+		// tất cả các giá trị lưu trên session đều có thể truy cập được từ View
+				session.setAttribute("TongSoLuongSanPhamTrongGioHang", getTotalItems(request)); 
+		return ResponseEntity.ok(jsonResult);
+	}
+	
+	
+	
 	
 	private BigDecimal getTotalPrice(final HttpServletRequest request) {
 		HttpSession httpSession = request.getSession();
@@ -185,7 +215,8 @@ public class CartController extends BaseController {
 
 		Cart cart = (Cart) httpSession.getAttribute("cart");
 		List<CartItem> cartItems = cart.getCartItems();
-
+		
+		
 		BigDecimal total = new BigDecimal("0");
 		for (CartItem item : cartItems) {
 			

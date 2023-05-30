@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.devpro.JavaWeb.model.Product;
 import com.devpro.JavaWeb.model.SaleOrder;
 import com.devpro.JavaWeb.services.impl.ProductService;
-import com.devpro.JavaWeb.services.impl.saleorderSrervice;
+import com.devpro.JavaWeb.services.impl.SaleOrderService;
 
 @Controller
 public class AdminHomeController {
@@ -24,7 +24,7 @@ public class AdminHomeController {
 	private ProductService productService;
 	
 	@Autowired
-	private saleorderSrervice saleorderSrervice;
+	private SaleOrderService saleorderSrervice;
 	
 	
 	@RequestMapping(value = {"/admin/home"}, method = RequestMethod.GET)
