@@ -2,6 +2,11 @@ package com.devpro.JavaWeb.services.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -205,7 +210,33 @@ public class ProductService extends BaseService<Product> {
 
 		return getEntitiesByNativeSQL(sql,searchModel.getPage());
 	}
-
+	
+	public List<Product> getProductsByCategoryName(String categoryName) {
+	    // lấy danh sách sản phẩm theo tên danh mục từ cơ sở dữ liệu
+	    List<Product> products = new ArrayList<>();
+	    try {
+	        Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/shop", "root", "123456");
+	        String query = "SELECT * FROM tbl_product WHERE categories = ?";
+	        PreparedStatement statement = connection.prepareStatement(query);
+	        statement.setString(1, categoryName);
+	        ResultSet result = statement.executeQuery();
+	        while (result.next()) {
+	            Product product = new Product();
+	            product.setId(result.getInt("id"));
+	            product.setTitle(result.getString("title"));
+	            product.setDetails(result.getString("details"));
+	            product.setPrice(result.getBigDecimal("price"));
+	            product.setPriceSale(result.getBigDecimal("priceSale"));
+	            product.setAvatar(result.getString("avatar"));
+	            // thêm các thuộc tính khác của đối tượng Product nếu có
+	            products.add(product);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return products;
+	}
+	
 	// xóa trong cơ sở dữ liệu
 	@Autowired
 	private ProductRepository repo;
@@ -225,5 +256,5 @@ public class ProductService extends BaseService<Product> {
 		productDel.setStatus(false);
 		return super.saveOrUpdate(productDel);
 	}
-
+	
 }

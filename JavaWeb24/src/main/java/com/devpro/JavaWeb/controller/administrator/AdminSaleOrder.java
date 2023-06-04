@@ -30,38 +30,25 @@ public class AdminSaleOrder extends BaseController{
 	private SaleOrderService saleorderSrervice;
 	@Autowired
 	private ProductService  productService;
-	@RequestMapping(value = {"/admin/manager/saleOrder"}, method = RequestMethod.GET)
-	public String login(final Model model, final HttpServletRequest request, final HttpServletResponse response)
-		throws IOException{
-		
-		// lấy danh sách categories từ database và trả về view thông qua model
-		List<SaleOrder> saleOrders = saleorderSrervice.findAll();
-			
-		//đẩy xuống view để xử lý
-		model.addAttribute("saleOrders", saleOrders);
-		
-		return "administrator/saleOrder-admin";
-	}
-	@RequestMapping(value = { "/admin/SaleOrder/list" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/admin/manager/saleOrder" }, method = RequestMethod.GET)
 	public String searchProduct(final Model model, final HttpServletRequest request, final HttpServletResponse response)
 			throws IOException {
 
 		String keyword = request.getParameter("keyword");
-		String categoryId = request.getParameter("categoryId");
 		Integer page = 1;
 		try {
 			page = Integer.parseInt(request.getParameter("page"));
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		
 		ProductSearch searchModel = new ProductSearch();
 		searchModel.setKeyword(keyword);
-		searchModel.setCategoreisId(categoryId);
 		searchModel.setPage(page);
 
-		model.addAttribute("products", productService.searchProduct(searchModel));
+		model.addAttribute("saleOrders", saleorderSrervice.searchSaleOrder(searchModel));
 		model.addAttribute("searchModel", searchModel);
-		return "administrator/categories-admin";
+		return "administrator/saleOrder-admin";
 	}
 	
 }

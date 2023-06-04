@@ -18,12 +18,11 @@
 	<jsp:include page="/WEB-INF/views/customer/layout/header.jsp"></jsp:include>
 	<div class="login-page">
 		<div class="form">
-			<form class="login-form" method="POST"
-				action="${base }/login_processing_url">
+			<form class="login-form" method="POST" action="${base }/login_processing_url">
 				<h3 style="font-size: 30px; margin-bottom: 20px;">Đăng Nhập</h3>
 				<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" />
-
+ 
 				<!-- bắt buộc name phải đẻ là "username" -->
 				<input type="text" name="username" class="form-control"
 					placeholder="Username">

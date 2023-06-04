@@ -43,8 +43,10 @@
 									src="${base}/img/categories_icon_1.png" alt=""> Tất cả
 									sản phẩm<i class="fa-solid fa-caret-right"></i>
 									<ul class="sub-menu">
-										<c:forEach var="category" items="${categories}">
-											<li><a href="">${category.name}</a></li>
+										<c:forEach  items="${categories}" var="category">
+											<li>											
+											<a href="${base }/all-category?TenDm=${category.name}" name="TenDm">${category.name}</a>
+											</li>
 										</c:forEach>
 
 									</ul>
@@ -81,16 +83,12 @@
 				<ul>
 					<c:choose>
 						<c:when test="${isLogined}">
-							<li class="acc">
-								<i class="fa-regular fa-user"></i> 
-								<a href="${base}/login">${userLogined.username}</a>
-							</li>
+							<li class="acc"><i class="fa-regular fa-user"></i> <a
+								href="${base}/login">${userLogined.username}</a></li>
 						</c:when>
 						<c:otherwise>
-							<li class="acc">
-								<i class="fa-regular fa-user"></i> 
-								<a href="${base}/login">Tài Khoản</a>
-							</li>
+							<li class="acc"><i class="fa-regular fa-user"></i> <a
+								href="${base}/login">Tài Khoản</a></li>
 						</c:otherwise>
 					</c:choose>
 

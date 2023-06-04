@@ -10,12 +10,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.devpro.JavaWeb.controller.BaseController;
+
 // 1. Báo cho spring-mvc biết đây là 1 controller
 // 2. SpringMVC sẽ tạo 1 instance của TestController và sẽ được quản lí bởi SpringContrainer
 // b1: TestController testController = new TestController();
 // b2: SpringContainner.Put(testController)
 @Controller 
-public class NewsDatailController {
+public class NewsDatailController extends BaseController{
 	@RequestMapping(value = {"/newsDatail"}, method = RequestMethod.GET)
 	public String newsDatail(final Model model, final HttpServletRequest request, final HttpServletResponse response)
 		throws IOException{

@@ -13,5 +13,5 @@ public class UserService extends BaseService<User> {
 	protected Class<User> clazz() {
 		return User.class;
 	}
-	
+
 }

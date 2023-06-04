@@ -170,7 +170,7 @@ header{
     width: 100%;
 
 }
-.header-box2-item .search-header button{
+.header-box2-item input[type="submit"]{
     background-color: #ffc000;
     color: #fff;
     text-transform: uppercase;
@@ -194,7 +194,7 @@ header{
     color: #ffff;
     opacity: 0.8;
     line-height: 48px;
-    margin-left: 30px;
+    margin-left: 15px;
 }
 .header-box2-right ul li a {
     color: #fff;
@@ -203,24 +203,26 @@ header{
 .header-box2-right ul li a i{
     font-size: 18px;
 }
-
-nav .banner{
+.header-box3 {
+    background-color: #ffff;
+}
+.banner{
     display: flex;
     margin: 10px 160px 0 160px;
 }
-nav .banner-right{
+.banner-right{
     width: 74%;
     margin-top: 10px;
 }
-nav .banner-right img{
+.banner-right img{
     width: 100%;
 
 }
-nav .banner-left {
+.banner-left {
     margin-top: 10px;
     width: 25%;
 }
-nav .banner-left a img{
+.banner-left a img{
     margin-left: 12px;
     width: 100%;
     

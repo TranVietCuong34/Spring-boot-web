@@ -37,7 +37,7 @@
 	</nav>
 	<div class="content">
 		<div class="menu-content-top">
-			<a href="">Tất Cả Sản phẩm</a>
+			<a href="">${name_category.name}</a>
 			<ul>
 				<li><a href="${base}/home">Trang chủ</a></li>
 				<li><a href="${base}/shop">Sản phẩm</a></li>
@@ -53,18 +53,18 @@
 				<ul class="item-product hover">
 					<li class="img-product col-4"><a href=""><img
 							src="img/img1-product.jpg" alt=""></a></li>
-					<c:forEach items="${products}" var="product" varStatus="loop">
+					<c:forEach items="${name_category.products}" var="product" varStatus="loop">
 					<c:if test="${product.status == true}">
 						<li class="col-2">
 							<div class="item">
 								<div class="img">
-									<a href=""> <img src="${base }/upload/${product.avatar}"
+									<a href=""> 
+									<img src="${base }/upload/${product.avatar}"
 										alt="" width="150" height="200">
 									</a>
 									<div class="icon-product">
 										<a href=""><i
-											class="fa-sharp fa-solid fa-magnifying-glass"></i></a> 
-											<a href=""
+											class="fa-sharp fa-solid fa-magnifying-glass"></i></a> <a href=""
 											onclick="AddToCart('${base}',${product.id},1)"> <i
 											class="fa-solid fa-cart-shopping"></i>
 										</a>
@@ -73,7 +73,7 @@
 								<div class="div-info">
 									<div class="div-info-title">
 										<p>Samsung</p>
-										<a  onclick="kichChiTiet(${product.id})" >${product.title}</a>
+										<a onclick="kichChiTiet(${product.id})" >${product.title}</a>
 									</div>
 
 									<div class="price">
