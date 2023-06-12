@@ -41,7 +41,7 @@
 						<div class="d-flex flex-row justify-content-between mt-4">
 							<div class="d-flex flex-row" style="margin: 20px 0">
 								<input id="page" name="page" class="form-control"
-									value="${searchModel.page}">
+									value="${searchModel.page}" style="display:none;">
 								<!-- tìm kiếm theo tên sản phẩm -->
 								<input type="text" id="keyword" name="keyword"
 									class="form-control" placeholder="Search" autocomplete="off"
@@ -60,12 +60,11 @@
 										<th>Địa Chỉ</th>
 										<th>Số điện thoại</th>
 										<th>Email</th>
-										<th>Thao Tác</th>
 									</tr>
 								</thead>
 								<tbody>
 
-									<c:forEach items="${saleOrders.data}" var="saleOrder"
+									<c:forEach items="${listSaleOrders.data}" var="saleOrder"
 										varStatus="loop">
 										<tr>
 											<th scope="row" width="5%">${loop.index + 1}</th>
@@ -73,17 +72,6 @@
 											<td>${saleOrder.customerAddress}</td>
 											<td>${saleOrder.customerPhone}</td>
 											<td>${saleOrder.customerEmail}</td>
-
-
-											<td>
-												<button>
-													<a href="${base}/admin/manager/add-product/${saleOrder.id}">Sửa</a>
-												</button>
-												<button>
-													<a href=""}">Xóa</a>
-												</button>
-												<button>Chi tiết</button>
-											</td>
 										</tr>
 									</c:forEach>
 
@@ -116,9 +104,9 @@
 			$("#keyword").val(${searchModel.keyword});
 			
 				$("#paging").pagination({
-					currentPage: ${saleOrders.currentPage}, 	//trang hiện tại
-			        items: ${saleOrders.totalItems},			//tổng số sản phẩm
-			        itemsOnPage: ${saleOrders.sizeOfPage}, 	//số sản phẩm trên 1 trang
+					currentPage: ${listSaleOrders.currentPage}, 	//trang hiện tại
+			        items: ${listSaleOrders.totalItems},			//tổng số sản phẩm
+			        itemsOnPage: ${listSaleOrders.sizeOfPage}, 	//số sản phẩm trên 1 trang
 			        cssStyle: 'light-theme',
 			        onPageClick: function(pageNumber, event) {
 			        	$('#page').val(pageNumber);
@@ -126,7 +114,11 @@
 					},
 			    });
 			});
-	
+		function del(id) {
+			if(confirm("Bạn muốn xóa id = " + id)){
+				window.location = "/admin/manager/saleOrder/del?idSaleOr=" +id;
+			}
+		}
 	</script>
 </body>
 

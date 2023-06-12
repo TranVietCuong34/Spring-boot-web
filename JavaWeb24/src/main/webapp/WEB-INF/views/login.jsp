@@ -42,7 +42,7 @@
 				</c:if>
 				<button type="submit">Log In</button>
 				<div class="message">
-					Not registered? <a href="#">Create an account</a>
+					Not registered? <a href="${base}/register-login">Create an account</a>
 				</div>
 			</form>
 		</div>

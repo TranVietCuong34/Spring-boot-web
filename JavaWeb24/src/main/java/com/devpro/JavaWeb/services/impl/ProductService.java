@@ -25,9 +25,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.devpro.JavaWeb.dto.ProductSearch;
+import com.devpro.JavaWeb.model.Categories;
 import com.devpro.JavaWeb.model.Product;
 import com.devpro.JavaWeb.model.ProductImages;
-import com.devpro.JavaWeb.repository.ProductRepository;
 import com.devpro.JavaWeb.services.BaseService;
 import com.devpro.JavaWeb.services.PagerData;
 
@@ -38,8 +38,7 @@ public class ProductService extends BaseService<Product> {
 
 	@Autowired
 	private Product_imageService productImagesService;
-
-	@Override
+	@Autowired
 	protected Class<Product> clazz() {
 		return Product.class;
 	}
@@ -186,7 +185,7 @@ public class ProductService extends BaseService<Product> {
 //	
 	public PagerData<Product> searchProduct(ProductSearch searchModel) {
 		// khởi tạo câu lệnh
-		String sql = "SELECT * FROM tbl_products p WHERE 1=1";
+		String sql = "SELECT * FROM tbl_products p WHERE 1=1 ";
 
 		if (searchModel != null) {
 
@@ -198,7 +197,8 @@ public class ProductService extends BaseService<Product> {
 			// tìm kiếm theo title và description
 			if (!org.springframework.util.StringUtils.isEmpty(searchModel.getCategoreisId())) {
 				sql += " and (p.title like '%" + searchModel.getKeyword() + "%'" + " or p.detail_description like '%"
-						+ searchModel.getKeyword() + "%'" + " or p.short_description like '%" + searchModel.getKeyword()
+						+ searchModel.getKeyword() + "%'" 
+						+ " or p.short_description like '%"  + searchModel.getKeyword()
 						+ "%')";
 			}
 
@@ -206,6 +206,7 @@ public class ProductService extends BaseService<Product> {
 //			if(!StringUtils.isEmpty(searchModel.getSeo())) {
 //				sql += " and seo = '" + searchModel.getSeo() + "'";
 //			}
+			sql += " ORDER BY p.price ASC";
 		}
 
 		return getEntitiesByNativeSQL(sql,searchModel.getPage());
@@ -236,17 +237,7 @@ public class ProductService extends BaseService<Product> {
 	    }
 	    return products;
 	}
-	
-	// xóa trong cơ sở dữ liệu
-	@Autowired
-	private ProductRepository repo;
-	@Transactional
-	public void delete(int id) {
-		repo.deleteById(id);;
-	}
-	
-	
-	
+		
 	@Transactional 
 	public Product deleteSanPham(Product product) {
 		Product productDel = super.getById(product.getId());
@@ -256,5 +247,12 @@ public class ProductService extends BaseService<Product> {
 		productDel.setStatus(false);
 		return super.saveOrUpdate(productDel);
 	}
+	
+
+	
+	
+	
+	
+	
 	
 }

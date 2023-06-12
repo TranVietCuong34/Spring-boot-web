@@ -64,8 +64,7 @@
 						<li>Miễn phí giao hàng trong bán kính 5km</li>
 					</ul>
 					<div class="cart">
-						<input type="number" id="points" name="points" placeholder="1">
-						<button onclick="AddToCart('${base}',${product.id},1)">cho vào giỏ hàng</button>
+						<button onclick="AddToCart('${base}',${products.id},1)">cho vào giỏ hàng</button>
 					</div>
 					<div class="special-offer">
 						<p>Khuyến mãi đặc biệt ( SL có hạn)</p>

@@ -434,6 +434,11 @@ body {
 
 }
 .form-add{display: none;}
+.add-post {
+	border: 1px solid #3C91E6;
+	width: 50%;
+	margin: auto;
+}
 form h1 {
     font-size: 18px;
     background: #3C91E6 none repeat scroll 0% 0%;

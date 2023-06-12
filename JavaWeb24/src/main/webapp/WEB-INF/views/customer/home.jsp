@@ -92,8 +92,7 @@
 							</div>
 						</li>
 					</c:if>
-						
-
+	
 					</c:forEach>
 				</ul>
 			</div>

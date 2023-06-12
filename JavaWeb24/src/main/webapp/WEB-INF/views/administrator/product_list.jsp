@@ -48,7 +48,7 @@
 						<div class="d-flex flex-row justify-content-between mt-4">
 							<div class="d-flex flex-row" style="margin: 20px 0">
 								<input id="page" name="page" class="form-control"
-									value="${searchModel.page}">
+									value="${searchModel.page}" style="display:none;">
 
 								<!-- tìm kiếm theo tên sản phẩm -->
 								<input type="text" id="keyword" name="keyword"
@@ -113,13 +113,11 @@
 												<a href="${base}/admin/manager/add-product/${product.id}">Sửa</a>
 											</button>
 											<button>
-												<%-- <a href="${base}/admin/manager/del-product/${product.id}">Xóa</a> --%>
+												
 												<a href="" onclick="XoaSanPham(${product.id})">Xóa</a>
 											</button>
 
-											<button>
-												<a href="">Chi Tiết</a>
-											</button>
+											
 										</td>
 									</tr>
 								</c:forEach>
@@ -165,12 +163,14 @@
 		function  XoaSanPham(idXoa) {
 			var data = {
 					id: idXoa,
-					tenSanPham: "",
-					soLuong: "",
-					size: "",
-					gia: "",
-					formDang: "",
-					thietKe: "",
+					title: "",
+					price: "",
+					priceSale: "",
+					shortDes: "",
+					details: "",
+					avatar: "",
+					seo: "",
+					isHot: "",
 					
 			};
 			jQuery.ajax({

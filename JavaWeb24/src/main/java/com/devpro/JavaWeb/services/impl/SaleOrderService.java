@@ -1,7 +1,13 @@
 package com.devpro.JavaWeb.services.impl;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +15,10 @@ import org.springframework.stereotype.Service;
 
 import com.devpro.JavaWeb.dto.ProductSearch;
 import com.devpro.JavaWeb.model.Categories;
+import com.devpro.JavaWeb.model.Product;
 import com.devpro.JavaWeb.model.SaleOrder;
 import com.devpro.JavaWeb.model.SaleOrderProducts;
+import com.devpro.JavaWeb.repository.SalerOrderRepository;
 import com.devpro.JavaWeb.services.BaseService;
 import com.devpro.JavaWeb.services.PagerData;
 
@@ -29,6 +37,7 @@ public class SaleOrderService extends BaseService<SaleOrder> {
 			saleOrderProducts.setSaleOrder(soSaved);
 			saleOrderProductsService.saveOrUpdate(saleOrderProducts);
 		}
+		
 	}
 
 	@Override
@@ -42,12 +51,13 @@ public class SaleOrderService extends BaseService<SaleOrder> {
 
 		// tìm kiếm theo title và description
 		if (!org.springframework.util.StringUtils.isEmpty(searchModel.getKeyword())) {
-			sql += " and (p.customer_name like '%" + searchModel.getKeyword() + "%'" 
-					+ " or p.customer_address like '%" + searchModel.getKeyword() + "%'" 
-					+ " or p.customer_phone like '%" + searchModel.getKeyword() + "%'" 
+			sql += " and (p.customer_name like '%" + searchModel.getKeyword() + "%'" + " or p.customer_address like '%"
+					+ searchModel.getKeyword() + "%'" + " or p.customer_phone like '%" + searchModel.getKeyword() + "%'"
 					+ " or p.cutomer_email like '%" + searchModel.getKeyword() + "%')";
 		}
 
-		return getEntitiesByNativeSQL(sql,searchModel.getPage());
+		return getEntitiesByNativeSQL(sql, searchModel.getPage());
 	}
+
+
 }

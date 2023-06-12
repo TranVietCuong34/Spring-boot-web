@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import com.devpro.JavaWeb.dto.ProductSearch;
@@ -43,30 +45,21 @@ public class CategoriesService extends BaseService<Categories> {
 
 				return getEntitiesByNativeSQL(sql,searchModel.getPage());
 	}
-	public List<Product> getProductsByCategoryName(String categoryName) {
-	    // lấy danh sách sản phẩm theo tên danh mục từ cơ sở dữ liệu
-	    List<Product> products = new ArrayList<>();
-	    try {
-	        Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/shop", "root", "123456");
-	        String query = "SELECT * FROM tbl_product WHERE categories = ?";
-	        PreparedStatement statement = connection.prepareStatement(query);
-	        statement.setString(1, categoryName);
-	        ResultSet result = statement.executeQuery();
-	        while (result.next()) {
-	            Product product = new Product();
-	            product.setId(result.getInt("id"));
-	            product.setTitle(result.getString("title"));
-	            product.setDetails(result.getString("details"));
-	            product.setPrice(result.getBigDecimal("price"));
-	            product.setPriceSale(result.getBigDecimal("priceSale"));
-	            product.setAvatar(result.getString("avatar"));
-	            // thêm các thuộc tính khác của đối tượng Product nếu có
-	            products.add(product);
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	    return products;
+	
+	@Transactional 
+	public Categories deleteCategory(Categories categories) {
+		Categories categoriesDel = super.getById(categories.getId());
+		if(categoriesDel.getStatus() == false) {
+			return categoriesDel;
+		}
+		categoriesDel.setStatus(false);
+		return super.saveOrUpdate(categoriesDel);
 	}
+//	@Transactional
+//	public void del(Categories categories) {
+//		Categories categories2 = super.getById(categories.getId());
+//		super.deleteById(categories2.getId());
+//	}
+	
 	
 }

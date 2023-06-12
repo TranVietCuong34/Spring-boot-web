@@ -60,7 +60,8 @@
 					<li class="col-2 ">
 						<button
 							onclick="Giam('${base}', ${ci.productId }, '${ci.productId }')"
-							style="padding: 0px 6px;">-</button> <span id="${ci.productId}">${ci.quanlity }</span>
+							style="padding: 0px 6px;">-</button> 
+							<span id="${ci.productId}">${ci.quanlity }</span>
 						<button
 							onclick="Tang('${base}', ${ci.productId }, '${ci.productId }')"
 							style="padding: 0px 4px">+</button>
@@ -89,8 +90,7 @@
 									<div class="form-group"
 										style="margin-bottom: 15px; display: flex; flex-direction: column;">
 										<label for="customerPhone" style="margin: 10px 0;">Họ
-											và tên khách hàng</label> 
-											<input type="text" class="form-control"
+											và tên khách hàng</label> <input type="text" class="form-control"
 											id="customerFullName" name="customerFullName"
 											value="${userLogined.username }" placeholder="Full name"
 											style="width: 70%; padding: 5px;">
@@ -196,7 +196,7 @@
 	</div>
 	<jsp:include page="/WEB-INF/views/customer/layout/footer.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/customer/layout/js.jsp"></jsp:include>
-	
+
 </body>
 
 </html>

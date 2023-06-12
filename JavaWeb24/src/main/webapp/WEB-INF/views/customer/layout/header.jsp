@@ -43,10 +43,13 @@
 									src="${base}/img/categories_icon_1.png" alt=""> Tất cả
 									sản phẩm<i class="fa-solid fa-caret-right"></i>
 									<ul class="sub-menu">
-										<c:forEach  items="${categories}" var="category">
-											<li>											
-											<a href="${base }/all-category?TenDm=${category.name}" name="TenDm">${category.name}</a>
-											</li>
+										<c:forEach items="${categories}" var="category">
+											<c:if test="${category.status == true}">
+												<li><a
+													href="${base }/all-category?TenDm=${category.name}"
+													name="TenDm">${category.name}</a></li>
+											</c:if>
+
 										</c:forEach>
 
 									</ul>

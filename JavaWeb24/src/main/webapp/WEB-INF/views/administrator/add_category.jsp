@@ -47,105 +47,36 @@
 			<div class="table-data">
 				<div class="order">
 					<sf:form method="post"
-						action="${base}/admin/add-product/saveOrUpdate"
+						action="${base}/admin/manager/add-category/saveOrUpdate"
 						class="form-add add-post"
-						style="display:block; position: relative;"
-						modelAttribute="product" enctype="multipart/form-data">
-						<a href="${base}/admin/product/list"
+						style="display:block;position: relative;"
+						modelAttribute="newCategory">
+						<a href="${base}/admin/manager/categories"
 							style="position: absolute; right: 0; z-index: 1; top: -4px;"><i
-							class="fa-solid fa-rectangle-xmark" style="font-size: 25px;     color: white;"></i></a>
-						<h1>Thêm/Sửa Sản Phẩm</h1>
-
+							class="fa-solid fa-rectangle-xmark"
+							style="font-size: 25px; color: white;"></i></a>
+						<h1>Thêm/Sửa Danh Mục</h1>
 						<div class="contentform">
 							<div class="leftcontact">
 								<div class="form-group">
 									<p>
-										Product Id<span>*</span>
+										Category Id<span>*</span>
 									</p>
 									<sf:input path="id" type="text" name="nom" id="title" />
 								</div>
-								<div class="form-group mb-2">
-									<p>
-										Category<span>*</span>
-									</p>
-									<sf:select path="categories.id" class="form-control"
-										id="category"
-										style="border-radius: 0px 5px 5px 0px; border: 1px solid #eee;margin-bottom: 15px;width: 100%;height: 40px;float: left;padding: 0px 15px;">
-										<sf:options items="${categories }" itemValue="id"
-											itemLabel="name" />
-									</sf:select>
-								</div>
 								<div class="form-group">
 									<p>
-										Title<span>*</span>
+										Tên Danh Mục<span>*</span>
 									</p>
-									<sf:input path="title" type="text" name="nom" id="title" />
+									<sf:input path="name" type="text" name="nom" id="name" />
 								</div>
-								<div class="form-group">
-									<p>
-										Price<span>*</span>
-									</p>
-									<sf:input path="price" type="text" name="nom" id="price" />
-								</div>
-								<div class="form-group">
-									<p>
-										Price Sale<span>*</span>
-									</p>
-									<sf:input path="priceSale" type="text" name="nom"
-										id="price_sale" />
-								</div>
-								<div class="form-group">
-									<p>
-										Description<span>*</span>
-									</p>
-									<sf:input path="shortDes" type="text" name="nom"
-										id="short_description" />
-								</div>
-								<div class="form-group">
-									<p>
-										Details<span>*</span>
-									</p>
-									<sf:textarea path="details" class="form-control"
-										id="detail_description"></sf:textarea>
-								</div>
-								<div class="form-group">
-									<p>
-										Avatar<span>*</span>
-									</p>
-
-									<input type="file" id="fileProductAvatar" name="productAvatar"
-										class="form-control">
 
 
-								</div>
 
-								<c:if test="${product.id != null}">
-									<div class="form-group">
-										<img alt="" src="${base}/upload/${product.avatar}"
-											style="width: 150px; height: 150px">
-									</div>
-								</c:if>
-
-								<div class="form-group">
-									<p>
-										Picture<span>*</span>
-									</p>
-									<input type="file" id="fileProductPictures"
-										name="productPictures" class="form-control"
-										multiple="multiple">
-								</div>
-								<div class="form-group">
-									<c:forEach items="${product.productImages}" var="productImage">
-										<img alt="" src="${base}/upload/${productImage.path}"
-											style="width: 150px; height: 150px">
-									</c:forEach>
-
-								</div>
 
 							</div>
 						</div>
 						<button type="submit" class="button-contact">Send</button>
-
 					</sf:form>
 				</div>
 			</div>
@@ -167,7 +98,7 @@
 		$('#detail_description').summernote(
 				{
 					placeholder : 'Viết mô tả',
-					tabsize : 2,
+					tabsize : 1,
 					height : 120,
 					toolbar : [ [ 'style', [ 'style' ] ],
 							[ 'font', [ 'bold', 'underline', 'clear' ] ],

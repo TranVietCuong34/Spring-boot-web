@@ -60,14 +60,6 @@ public class AdminProductController extends BaseController {
 		return "administrator/add_product";
 	}
 
-	@RequestMapping(value = {"/admin/manager/del-product/{productId}" }, method = RequestMethod.GET)
-	public String del(final Model model, final HttpServletRequest request, final HttpServletResponse response,
-			@PathVariable("productId") int productID) throws IOException {
-
-	    
-		productService.delete(productID);
-		return "redirect:/admin/product/list";
-	}
 	
 	@RequestMapping(value = { "/admin/add-product/saveOrUpdate" }, method = RequestMethod.POST)
 	public String addOrUpdateStore(final Model model, final HttpServletRequest request,
@@ -83,7 +75,7 @@ public class AdminProductController extends BaseController {
 		// trả về view (list) sử dụng redirect để chuyển hướng request
 		return "redirect:/admin/product/list";
 	}
-
+	// phân trang 
 	@RequestMapping(value = { "/admin/product/list" }, method = RequestMethod.GET)
 	public String searchProduct(final Model model, final HttpServletRequest request, final HttpServletResponse response)
 			throws IOException {
@@ -106,7 +98,7 @@ public class AdminProductController extends BaseController {
 		return "administrator/product_list";
 	}
 	
-	@RequestMapping(value = {"/admin/xoa-san-pham"}, method = RequestMethod.POST)
+	@RequestMapping(value = {"/admin/xoa-san-pham"}, method = RequestMethod.DELETE)
 	public ResponseEntity<Map<String, Object>> xoaSanPham(final Model model,
 			final HttpServletRequest request,
 			final HttpServletResponse response,
