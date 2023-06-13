@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 
 <jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
 <header>
@@ -77,8 +78,14 @@
 				<span><i class="fa-solid fa-align-right"></i></span>
 			</div>
 			<div class="search-header">
-				<input type="text" placeholder="Tìm kiếm sản phẩm..."> <input
-					type="submit" name="" value="Tìm kiếm">
+				<form action="${base}/search_product"
+					style="display: flex; width: 100%;">
+					<input type="text" name="keyWord"
+						placeholder="Tìm kiếm sản phẩm..." required="required"
+						value="${keyWord}"> <input type="submit" name=""
+						value="Tìm kiếm">
+				</form>
+
 
 			</div>
 

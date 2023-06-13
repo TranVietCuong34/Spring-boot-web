@@ -19,6 +19,8 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,7 @@ import com.devpro.JavaWeb.dto.ProductSearch;
 import com.devpro.JavaWeb.model.Categories;
 import com.devpro.JavaWeb.model.Product;
 import com.devpro.JavaWeb.model.ProductImages;
+import com.devpro.JavaWeb.repository.ProductRepository;
 import com.devpro.JavaWeb.services.BaseService;
 import com.devpro.JavaWeb.services.PagerData;
 
@@ -38,6 +41,7 @@ public class ProductService extends BaseService<Product> {
 
 	@Autowired
 	private Product_imageService productImagesService;
+
 	@Autowired
 	protected Class<Product> clazz() {
 		return Product.class;
@@ -148,9 +152,10 @@ public class ProductService extends BaseService<Product> {
 
 		// có đẩy pictures ???
 		if (!isEmptyUploadFile(productPictures)) {
-			List<ProductImages> productImages = productImagesService.getEntitiesByNativeSQL("select * from tbl_products_images where product_id = " + productSaved.getId());
+			List<ProductImages> productImages = productImagesService.getEntitiesByNativeSQL(
+					"select * from tbl_products_images where product_id = " + productSaved.getId());
 			// xóa pictures cũ
-			if (productImages != null && productImages.size() >0) {
+			if (productImages != null && productImages.size() > 0) {
 				for (ProductImages opi : productImages) {
 					// xóa anh san pham trong folder upload
 					new File("F:/upload/" + opi.getPath()).delete();
@@ -197,8 +202,7 @@ public class ProductService extends BaseService<Product> {
 			// tìm kiếm theo title và description
 			if (!org.springframework.util.StringUtils.isEmpty(searchModel.getCategoreisId())) {
 				sql += " and (p.title like '%" + searchModel.getKeyword() + "%'" + " or p.detail_description like '%"
-						+ searchModel.getKeyword() + "%'" 
-						+ " or p.short_description like '%"  + searchModel.getKeyword()
+						+ searchModel.getKeyword() + "%'" + " or p.short_description like '%" + searchModel.getKeyword()
 						+ "%')";
 			}
 
@@ -209,50 +213,30 @@ public class ProductService extends BaseService<Product> {
 			sql += " ORDER BY p.price ASC";
 		}
 
-		return getEntitiesByNativeSQL(sql,searchModel.getPage());
+		return getEntitiesByNativeSQL(sql, searchModel.getPage());
 	}
-	
-	public List<Product> getProductsByCategoryName(String categoryName) {
-	    // lấy danh sách sản phẩm theo tên danh mục từ cơ sở dữ liệu
-	    List<Product> products = new ArrayList<>();
-	    try {
-	        Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/shop", "root", "123456");
-	        String query = "SELECT * FROM tbl_product WHERE categories = ?";
-	        PreparedStatement statement = connection.prepareStatement(query);
-	        statement.setString(1, categoryName);
-	        ResultSet result = statement.executeQuery();
-	        while (result.next()) {
-	            Product product = new Product();
-	            product.setId(result.getInt("id"));
-	            product.setTitle(result.getString("title"));
-	            product.setDetails(result.getString("details"));
-	            product.setPrice(result.getBigDecimal("price"));
-	            product.setPriceSale(result.getBigDecimal("priceSale"));
-	            product.setAvatar(result.getString("avatar"));
-	            // thêm các thuộc tính khác của đối tượng Product nếu có
-	            products.add(product);
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	    return products;
-	}
-		
-	@Transactional 
+
+	@Transactional
 	public Product deleteSanPham(Product product) {
 		Product productDel = super.getById(product.getId());
-		if(productDel.getStatus() == false) {
+		if (productDel.getStatus() == false) {
 			return productDel;
 		}
 		productDel.setStatus(false);
 		return super.saveOrUpdate(productDel);
 	}
-	
 
-	
-	
-	
-	
-	
-	
+	@Autowired
+	private ProductRepository productRepository;
+
+	public Page<Product> findAll(Pageable pageable) {
+		return productRepository.findAll(pageable);
+	}
+
+	public List<Product> search(String keyWord) {
+		String sql = "SELECT * FROM tbl_products  p WHERE "
+				+ "CONCAT(p.title , p.short_description, p.price_sale, p.price)" + "LIKE '%" + keyWord + "%'";
+		return getEntitiesByNativeSQL(sql);
+	}
+
 }

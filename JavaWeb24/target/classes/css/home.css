@@ -162,7 +162,7 @@ header{
     display: flex;
     width: 40%;
 }
-.header-box2-item .search-header input{
+.header-box2-item .search-header form > input{
     margin-top: 5px;
     border-radius: 4px;
     margin-left: 5px;
@@ -173,7 +173,7 @@ header{
     width: 100%;
 
 }
-.header-box2-item input[type="submit"]{
+.header-box2-item form > input[type="submit"]{
     background-color: #ffc000;
     color: #fff;
     text-transform: uppercase;

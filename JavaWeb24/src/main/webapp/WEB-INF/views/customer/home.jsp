@@ -72,7 +72,7 @@
 								</div>
 								<div class="div-info">
 									<div class="div-info-title">
-										<p>Samsung</p>
+										<p>${product.categories.name}</p>
 										<a  onclick="kichChiTiet(${product.id})" >${product.title}</a>
 									</div>
 
