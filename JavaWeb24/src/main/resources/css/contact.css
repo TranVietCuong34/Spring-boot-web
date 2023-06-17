@@ -272,7 +272,7 @@ header{
 .info i {
     color:#F6AA93;
   }
-form h1 {
+.form h1 {
     font-size: 18px;
     background: #1b5191 none repeat scroll 0% 0%;
     color: rgb(255, 255, 255);
@@ -283,7 +283,7 @@ form h1 {
     text-align:left
   }
   
-form {
+.form {
     border-radius: 5px;
     max-width:700px;
     width:100%;
@@ -291,7 +291,7 @@ form {
     background-color: #FFFFFF;
     overflow: hidden;
 }
-form h1{
+.form h1{
   text-align: center;
   font-size: 25px;
 }

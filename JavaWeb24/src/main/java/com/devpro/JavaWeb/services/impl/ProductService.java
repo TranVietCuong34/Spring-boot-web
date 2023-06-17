@@ -2,39 +2,21 @@ package com.devpro.JavaWeb.services.impl;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.devpro.JavaWeb.dto.ProductSearch;
-import com.devpro.JavaWeb.model.Categories;
 import com.devpro.JavaWeb.model.Product;
 import com.devpro.JavaWeb.model.ProductImages;
 import com.devpro.JavaWeb.repository.ProductRepository;
 import com.devpro.JavaWeb.services.BaseService;
 import com.devpro.JavaWeb.services.PagerData;
-
-import antlr.StringUtils;
 
 @Service
 public class ProductService extends BaseService<Product> {
@@ -234,9 +216,15 @@ public class ProductService extends BaseService<Product> {
 	}
 
 	public List<Product> search(String keyWord) {
-		String sql = "SELECT * FROM tbl_products  p WHERE "
-				+ "CONCAT(p.title , p.short_description, p.price_sale, p.price)" + "LIKE '%" + keyWord + "%'";
+		String sql = "SELECT * FROM tbl_products  p INNER JOIN tbl_category c ON p.category_id = c.id WHERE 1=1 "
+				+ "AND CONCAT(p.title , p.short_description, p.price_sale, p.price, c.name) LIKE '%" + keyWord + "%' ";
 		return getEntitiesByNativeSQL(sql);
+	}
+	public PagerData<Product> search(ProductSearch searchModel) {
+		String sql = "SELECT * FROM tbl_products  p INNER JOIN tbl_category c ON p.category_id = c.id WHERE 1=1 "
+				+ "AND CONCAT(p.title , p.short_description, p.price_sale, p.price, c.name) LIKE '%" + searchModel.getKeyword() + "%' ";
+
+		return getEntitiesByNativeSQL(sql, searchModel.getPage());
 	}
 
 }

@@ -21,6 +21,7 @@ public class CartItem {
 	private BigDecimal priceUnit;
 	//ảnh
 	private String avatar;
+	
 	public int getProductId() {
 		return productId;
 	}

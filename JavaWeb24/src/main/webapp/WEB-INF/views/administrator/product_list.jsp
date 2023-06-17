@@ -90,9 +90,9 @@
 
 										<td>${product.title }</td>
 										<td>
-											<!-- định dạng tiền tệ  --> <fmt:setLocale value="vi_VN"
-												scope="session" /> <fmt:formatNumber
-												value="${product.price}" type="currency" />
+											<!-- định dạng tiền tệ  --> 
+												<fmt:setLocale value="vi_VN" scope="session" /> 
+												<fmt:formatNumber value="${product.price}" type="currency" />
 
 										</td>
 										<td>${product.categories.name }</td>

@@ -113,12 +113,7 @@
 			        	$('#btnSearch').trigger('click');
 					},
 			    });
-			});
-		function del(id) {
-			if(confirm("Bạn muốn xóa id = " + id)){
-				window.location = "/admin/manager/saleOrder/del?idSaleOr=" +id;
-			}
-		}
+			});		
 	</script>
 </body>
 

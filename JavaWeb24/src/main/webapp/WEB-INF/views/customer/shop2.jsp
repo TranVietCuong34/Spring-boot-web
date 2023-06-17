@@ -52,7 +52,7 @@
 			</div>
 			<div class="product">
 				<ul>
-					<c:forEach items="${pagedata.content}" var="product"
+					<c:forEach items="${products}" var="product"
 						varStatus="loop">
 						<c:if test="${product.status == true}">
 							<li>
@@ -91,14 +91,6 @@
 
 					</c:forEach>
 
-				</ul>
-			</div>
-			<div class="number">
-				<ul>
-					<li><a href="${base}/shop?page=1">First</a></li>
-					<li><a href="${base}/shop?page=${pagedata.number-1}">Previous</a></li>
-					<li><a href="${base}/shop?page=${pagedata.number+1}">Next</a></li>
-					<li><a href="${base}/shop?page=${pagedata.totalPages-1}">Last</a></li>
 				</ul>
 			</div>
 		</div>

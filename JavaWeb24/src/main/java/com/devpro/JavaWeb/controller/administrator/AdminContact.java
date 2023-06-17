@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.devpro.JavaWeb.controller.BaseController;
-import com.devpro.JavaWeb.model.Categories;
 import com.devpro.JavaWeb.model.Contact;
-import com.devpro.JavaWeb.services.impl.CategoriesService;
 import com.devpro.JavaWeb.services.impl.ContactService;
 @Controller
 public class AdminContact extends BaseController{

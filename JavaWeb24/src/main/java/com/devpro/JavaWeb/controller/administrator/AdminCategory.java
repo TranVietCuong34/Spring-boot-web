@@ -2,7 +2,6 @@ package com.devpro.JavaWeb.controller.administrator;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,15 +16,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-
 import com.devpro.JavaWeb.controller.BaseController;
 import com.devpro.JavaWeb.dto.ProductSearch;
 import com.devpro.JavaWeb.model.Categories;
-import com.devpro.JavaWeb.model.Product;
 import com.devpro.JavaWeb.services.impl.CategoriesService;
-import com.devpro.JavaWeb.services.impl.ProductService;
 
 @Controller
 public class AdminCategory extends BaseController {

@@ -45,7 +45,7 @@ public class RegisterLoginController {
 		Set<Role> roles = new HashSet<Role>(roleService.getEntitiesByNativeSQL("select * from tbl_roles where name = 'GUEST' "));
 		User user = new User();
 		user.setUsername(registerLogin.getUsername());
-		user.setPassword(new BCryptPasswordEncoder(4).encode(registerLogin.getPassword()));
+		user.setPassword(new BCryptPasswordEncoder(6).encode(registerLogin.getPassword()));
 		user.setEmail(registerLogin.getEmail());
 		user.setRoles(roles);
 		userService.saveOrUpdate(user);

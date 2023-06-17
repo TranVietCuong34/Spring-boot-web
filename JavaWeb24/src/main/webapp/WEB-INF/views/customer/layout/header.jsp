@@ -78,7 +78,7 @@
 				<span><i class="fa-solid fa-align-right"></i></span>
 			</div>
 			<div class="search-header">
-				<form action="${base}/search_product"
+				<form action="${base}/search"
 					style="display: flex; width: 100%;">
 					<input type="text" name="keyWord"
 						placeholder="Tìm kiếm sản phẩm..." required="required"

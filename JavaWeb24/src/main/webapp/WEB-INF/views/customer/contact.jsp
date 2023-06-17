@@ -20,7 +20,7 @@
 <body>
 	<jsp:include page="/WEB-INF/views/customer/layout/header.jsp"></jsp:include>
 	<div class="content">	
-        <sf:form modelAttribute="contactUs" action="${base}/contact" method="post" enctype="multipart/form-data">
+        <sf:form modelAttribute="contactUs" action="${base}/contact" method="post" enctype="multipart/form-data" class="form">
 			<h1>Let's Get Started</h1>
 			<div class="contentform">
 				<div class="leftcontact">

@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort.Direction;
@@ -58,6 +59,8 @@ public class ShopController extends BaseController {
 
 		model.addAttribute("pagedata", products);
 
+		model.addAttribute("sortBy", sortBy);
+		model.addAttribute("sortDirection", sortDirection);
 		return "customer/shop";
 	}
 
