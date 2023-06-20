@@ -64,9 +64,8 @@
 									<div class="icon-product">
 										<a href=""><i
 											class="fa-sharp fa-solid fa-magnifying-glass"></i></a> 
-											<a href=""
-											onclick="AddToCart('${base}',${product.id},1)"> <i
-											class="fa-solid fa-cart-shopping"></i>
+											<a href="" onclick="AddToCart('${base}',${product.id},1)">
+											 <i class="fa-solid fa-cart-shopping"></i>
 										</a>
 									</div>
 								</div>
